@@ -1,6 +1,45 @@
 const _1_0 = function(_1_1) {
+	let _1_2 = 0
+	let _1_3 = 0
+
+	while (_1_2 != 8) {
+		_1_1[6][_1_2++] = _1_1[5][_1_3] / _1_1[1][0] | 0
+		_1_1[6][_1_2++] = _1_1[5][_1_3] - (_1_1[5][_1_3++] / _1_1[1][1] | 0) * 10
+	}
+
+	_1_2 = 0
+	_1_3 = 0
+	let _1_4 = 0
+	// directional logic before optimization
+
+	while (_1_2 != 4) {
+		_1_3 = 0 // directional key in _1_1[2]
+		_1_4 = _1_1[6][_1_2] - _1_1[6][_1_2++ + 4]
+
+		if (_1_4 < 0) {
+			_1_3 += 4
+		}
+
+		if (_1_4 == 0) {
+			_1_3--
+		}
+
+		_1_4 = _1_1[6][_1_2] - _1_1[6][_1_2++ + 4]
+
+		if (_1_4 < 0) {
+			_1_3 += 2
+		}
+
+		if (_1_4 == 0) {
+			_1_3--
+		}
+
+		// ..
+		console.log(_1_3 + " [+" + _1_1[2][_1_3] + "]")
+	}
+
 	// ..
-	_1_1[5] = 1
+	_1_1[8] = 1
 	return _1_1
 }
 
@@ -29,51 +68,64 @@ const avolittyPathfinder = function(_1_1) {
 /*
 splitting src + dst
   _1_8
-    [0] grid
-    [1] src + dst
-    [2] current src + dst based on obstacles
-    [3] nested split traversal coordinates
-    [4] split traversal lengths w/ nested key
-    [5] 1|0 dst reached to break recursion
+    [] grid
+    [] h + w
+    [] traversal direction increments
+    [] src + dst
+    [] src + dst h + w pos
+    [] current src + dst based on obstacles
+    [] nested split traversal coordinates
+    [] split traversal lengths w/ nested key
+    [] 1|0 dst reached to break recursion
 */
 
-	_1_8 = [_1_2, [_1_8[1], _1_8[2]], [_1_8[1], _1_8[1], _1_8[2], _1_8[2]], [], 0]
+	_1_8 = [
+		_1_2,
+		[_1_3, _1_4],
+		_1_6,
+		[_1_8[1], _1_8[2]],
+		[
+			_1_8[1] / _1_3 | 0, // src h
+			_1_8[1] - (_1_8[1] / _1_4 | 0) * 10, // src w
+			_1_8[2] / _1_3 | 0, // dst h
+			_1_8[2] - (_1_8[2] / _1_4 | 0) * 10 // dst w
+		],
+		[
+			_1_8[1],
+			_1_8[1],
+			_1_8[2],
+			_1_8[2]
+		],
+		[],
+		[],
+		0
+	]
 
-	while (_1_8[5] == 0) {
+	while (_1_8[8] == 0) {
 		_1_8 = _1_0(_1_8)
 	}
 
-/*
-recursion steps in _1_0
-  calculating navigation key to use in _1_6
-    based on current split pos to dst
-  traversing to dst until obstacle is reached
-  traversing adjacent obstacles w/ async in 2 directions to find 2 pseudo dst
-  creating split for traversal to each psuedo dst with step counts in different array
-  setting current split pos to array
-
-  populating grid traversal with shortest path
-*/
-
+	console.log(_1_8)
 	// ..
 	return _1_8[0]
 }
 
+// temporary data for development
 let _0 = {
-"grid": [
-1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-0, 0, 3, 3, 3, 3, 3, 3, 0, 0,
-0, 0, 3, 0, 0, 0, 0, 0, 0, 0,
-0, 0, 3, 0, 0, 0, 0, 0, 0, 0,
-0, 3, 0, 0, 0, 3, 0, 0, 0, 0,
-0, 3, 0, 0, 0, 3, 0, 0, 0, 0,
-0, 3, 0, 3, 0, 3, 0, 0, 0, 0,
-0, 0, 0, 3, 0, 3, 0, 0, 0, 0,
-0, 0, 0, 3, 0, 3, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 3, 0, 0, 0, 2
-],
-"height": 10,
-"width": 10
+	"grid": [
+	0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 3, 3, 3, 3, 3, 3, 0, 0,
+	0, 0, 3, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 3, 0, 0, 0, 0, 0, 0, 0,
+	0, 3, 0, 0, 0, 3, 0, 0, 0, 0,
+	0, 3, 0, 0, 0, 3, 0, 0, 0, 0,
+	0, 3, 0, 3, 0, 3, 0, 0, 0, 0,
+	0, 0, 0, 3, 0, 3, 0, 0, 0, 0,
+	0, 0, 0, 3, 0, 3, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 3, 0, 0, 0, 2
+	],
+	"height": 10,
+	"width": 10
 }
 
 _0 = avolittyPathfinder(_0)
