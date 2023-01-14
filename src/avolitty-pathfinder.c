@@ -1,34 +1,56 @@
 #include <stdio.h>
 
-static void AvolittyPathfinderA(unsigned long int *a, unsigned long int b, unsigned long int c, unsigned char *d, unsigned char *e) {
+static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned long int *c, signed long int *d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned char *j, unsigned char *k, unsigned char l, unsigned char m) {
 	/* .. */
+	*k = 1U;
 	return;
 }
 
-void AvolittyPathfinder(unsigned long int *a, unsigned long int b, unsigned long int c, unsigned char *d, unsigned char e) {
-	signed long int f[10U] = {0, 0, 0, 0, 0, 0, 1, 0, (~b) + 1, b};
-	unsigned long int g = b * c;
-	unsigned long int h;
-	unsigned char i = 0U;
-	unsigned char *j = &i;
+void AvolittyPathfinder(unsigned long int *a, unsigned long int *b, unsigned long int *c, unsigned long int d, unsigned long int e, unsigned char *f, unsigned char g) {
+	signed long int h[10U] = {0, 0, 0, 0, 0, 0, 1, 0, (~d) + 1, d};
+	unsigned long int i = d * e;
+	unsigned long int j = i;
+	unsigned long int k;
+	unsigned char l = 0U;
+	unsigned char m;
+	unsigned char n;
+	unsigned char *o = &l;
 
-	while (g != 0UL) {
-		g--;
-		f[d[g]] = g;
+	while (i != 0UL) {
+		i--;
+		h[f[i]] = i;
 	}
 
-	g = f[1U];
-	printf("Starting point: %u\n", g);
+	i = h[1U];
+	k = h[2U];
+	h[0U] = h[8U] - 1;
+	h[1U] = h[9U] - 1;
+	h[2U] = -1;
+	h[3U] = 0;
+	h[4U] = h[8U] + 1;
+	h[5U] = h[9U] + 1;
+	m = (k / d) + 1U;
+	n = (k - ((k / e) * 10U)) + 1;
 
-	h = f[2U];
-	printf("Ending point: %u\n", h);
+	while (l == 0U) {
+		/*
+			a -> [array] cur pos
+			b -> [array] cur pos heights
+			c -> [array] widths for cur pos
+			h -> [array] traversal direction increments
+			d -> [integer] grid height
+			e -> [integer] grid width
+			i -> [integer] src pos
+			j -> [integer] length of grid
+			k -> [integer] dst pos
+			f -> [array] grid
+			o -> pointer [integer] traversal status 0|1
+			m -> [integer] dst height
+			n -> [integer] dst width
+		*/
 
-	f[0U] = f[8U] - 1;
-	f[1U] = f[9U] - 1;
-	f[2U] = -1;
-	f[3U] = 0;
-	f[4U] = f[8U] + 1;
-	f[5U] = f[9U] + 1;
-	/* .. */
+		AvolittyPathfinderA(a, b, c, h, d, e, i, j, k, f, o, m, n);
+	}
+
 	return;
 }
