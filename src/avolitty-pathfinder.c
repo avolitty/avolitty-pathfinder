@@ -44,27 +44,53 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 		}
 
 		s = a[p];
+		t = (s / h);
+		u = (s - ((s / i) * 10UL));
 		v = e[w];
 
 		if (v < 0L) {
-			r = ((unsigned long int) (~v)) + 1UL;
-			t = s / h;
-			u = s - ((s / i) * 10UL);
+			r = (((unsigned long int) (~v)) + 1UL);
 
-			while (m[s] != 3U && f != t && g != u) {
-				s -= r;
-				t = s / h;
-				u = s - ((s / i) * 10UL);
+			if ((f == t) || (g == u)) {
+				while (m[s] != 3U) {
+					s -= r;
+				}
+			} else {
+				if (r < i) {
+					while ((m[s] != 3U) && (f != t) && (g != u)) {
+						s -= r;
+						t--;
+						u++;
+					}
+				} else {
+					while ((m[s] != 3U) && (f != t) && (g != u)) {
+						s -= r;
+						t--;
+						u--;
+					}
+				}
 			}
 		} else {
-			q = (unsigned long int) v;
-			t = s / h;
-			u = s - ((s / i) * 10UL);
+			q = ((unsigned long int) v);
 
-			while (m[s] != 3U && f != t && g != u) {
-				s += q;
-				t = s / h;
-				u = s - ((s / i) * 10UL);
+			if ((f == t) || (g == u)) {
+				while (m[s] != 3U) {
+					s += q;
+				}
+			} else {
+				if (q < i) {
+					while ((m[s] != 3U) && (f != t) && (g != u)) {
+						s += q;
+						t++;
+						u--;
+					}
+				} else {
+					while ((m[s] != 3U) && (f != t) && (g != u)) {
+						s += q;
+						t--;
+						u++;
+					}
+				}
 			}
 		}
 
@@ -109,7 +135,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 		while (q != ++r) {
 			printf("%u ", m[r]);
 
-			if (((r + 1) % 10) == 0) {
+			if (((r + 1UL) % 10UL) == 0UL) {
 				printf("\n");
 			}
 		}
@@ -140,19 +166,19 @@ void AvolittyPathfinder(unsigned long int *a, unsigned long int *b, unsigned lon
 	}
 
 	i = h[1U];
-	a[0] = i;
-	b[0] = i / d;
-	c[0] = i - ((i / e) * 10UL);
+	a[0UL] = i;
+	b[0UL] = (i / d);
+	c[0UL] = (i - ((i / e) * 10UL));
 	l = h[2U];
 	f[l] = 3U;
-	h[0U] = h[8U] - 1L;
-	h[1U] = h[9U] - 1L;
+	h[0U] = (h[8U] - 1L);
+	h[1U] = (h[9U] - 1L);
 	h[2U] = -1L;
 	h[3U] = 0L;
-	h[4U] = h[8U] + 1L;
-	h[5U] = h[9U] + 1L;
-	m = l / d;
-	n = l - ((l / e) * 10UL);
+	h[4U] = (h[8U] + 1L);
+	h[5U] = (h[9U] + 1L);
+	m = (l / d);
+	n = (l - ((l / e) * 10UL));
 
 	while (p == 0U) {
 		/*
