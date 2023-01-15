@@ -18,12 +18,27 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 		n -> pointer [integer] traversal status 0|1
 	*/
 	unsigned long int o = *d;
-	unsigned long int p;
+	signed long int p;
 	unsigned char q;
 
 	while (o != 0UL) {
 		o--;
-		q = 0U;
+		q = b[o] < f;
+
+		if (b[o] == f) {
+			q += 2U;
+		}
+
+		if (c[o] < g) {
+			q += 4U;
+		}
+
+		if (c[o] == g) {
+			q += 8U;
+		}
+
+		p = e[q];
+		printf("Traversal direction increment: %ld", p);
 		/* .. */
 	}
 
