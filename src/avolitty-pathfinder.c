@@ -19,82 +19,78 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 		o -> recursive argument 0|1
 	*/
 	unsigned long int p = *e;
-	unsigned long int q = 0UL;
-	unsigned long int r = 0UL;
+	unsigned long int q;
+	unsigned long int r;
 	unsigned long int s;
 	unsigned long int t;
-	unsigned long int u;
-	unsigned long int v;
-	unsigned char w;
+	unsigned char u;
 
 	while (p != 0UL) {
 		p--;
-		w = b[p] < f;
+		u = b[p] < f;
 
 		if (b[p] == f) {
-			w += 2U;
+			u += 2U;
 		}
 
 		if (c[p] < g) {
-			w += 4U;
+			u += 4U;
 		}
 
 		if (c[p] == g) {
-			w += 8U;
+			u += 8U;
 		}
 
-		s = a[p];
-		t = (s / h);
-		u = (s - ((s / i) * 10UL));
-		v = d[w];
+		q = a[p];
+		r = (q / h);
+		s = (q - ((q / i) * 10UL));
+		t = d[u];
 
-		if (((w & 1) == 0) && (w != 6)) {
-			r = v;
+		if (((u & 1) == 0) && (u != 6)) {
+			u = 0U;
 
-			if ((f == t) || (g == u)) {
-				while (m[s] != 3U) {
-					s -= r;
+			if ((f == r) || (g == s)) {
+				while (m[q] != 3U) {
+					q -= t;
 				}
 			} else {
-				if (r < i) {
-					while ((m[s] != 3U) && (f != t) && (g != u)) {
-						s -= r;
-						t--;
-						u++;
+				if (t < i) {
+					while ((m[q] != 3U) && (f != r) && (g != s)) {
+						q -= t;
+						r--;
+						s++;
 					}
 				} else {
-					while ((m[s] != 3U) && (f != t) && (g != u)) {
-						s -= r;
-						t--;
-						u--;
+					while ((m[q] != 3U) && (f != r) && (g != s)) {
+						q -= t;
+						r--;
+						s--;
 					}
 				}
 			}
 		} else {
-			q = v;
-
-			if ((f == t) || (g == u)) {
-				while (m[s] != 3U) {
-					s += q;
+			if ((f == r) || (g == s)) {
+				while (m[q] != 3U) {
+					q += t;
 				}
 			} else {
-				if (q < i) {
-					while ((m[s] != 3U) && (f != t) && (g != u)) {
-						s += q;
-						t++;
-						u--;
+				if (t < i) {
+					while ((m[q] != 3U) && (f != r) && (g != s)) {
+						q += t;
+						r++;
+						s--;
 					}
 				} else {
-					while ((m[s] != 3U) && (f != t) && (g != u)) {
-						s += q;
-						t--;
-						u++;
+					while ((m[q] != 3U) && (f != r) && (g != s)) {
+						q += t;
+						r--;
+						s++;
 					}
 				}
 			}
 		}
 
-		printf("Traversal cur pos after obstacle collision: %lu\n", s);
+		printf("Traversal cur pos after obstacle collision: %lu\n", q);
 
 		/*
 			non-diagonal keys in existing direction increment array
@@ -105,22 +101,22 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 			obstacle traversal with re-routed destinations using AvolittyPathfinderA recursive arg goes here
 		 */
 
-		if (s == l) {
-			if (q == 0UL) {
-				while (a[p] != s) {
-					s += r;
-					m[s] = 8U;
+		if (q == l) {
+			if (u == 0U) {
+				while (a[p] != q) {
+					q += t;
+					m[q] = 8U;
 				}
 			} else {
-				while (a[p] != s) {
-					s -= q;
-					m[s] = 8U;
+				while (a[p] != q) {
+					q -= t;
+					m[q] = 8U;
 				}
 			}
 
 			a[p] = l;
-			b[p] = t;
-			c[p] = u;
+			b[p] = r;
+			c[p] = s;
 
 			if (o != 0U) {
 				*n = 1U;
