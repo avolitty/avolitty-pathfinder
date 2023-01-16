@@ -23,38 +23,37 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 	unsigned long int r;
 	unsigned long int s;
 	unsigned long int t;
-	unsigned char u;
+	unsigned char u = 0U;
+	unsigned char v;
 
 	while (p != 0UL) {
 		p--;
-		u = b[p] < f;
-
-		if (b[p] == f) {
-			u += 2U;
-		}
-
-		if (c[p] < g) {
-			u += 4U;
-		}
-
-		if (c[p] == g) {
-			u += 8U;
-		}
-
 		q = a[p];
-		r = (q / h);
-		s = (q - ((q / i) * 10UL));
-		t = d[u];
+                r = b[p];
+                s = c[p];
+		v = (f > r);
 
-		if (((u & 1) == 0) && (u != 6)) {
-			u = 0U;
+		if (f == r) {
+			v += 2U;
+		}
 
-			if ((f == r) || (g == s)) {
+		if (g > s) {
+			v += 4U;
+		}
+
+		if (g == s) {
+			v += 8U;
+		}
+
+		t = d[v];
+
+		if (((v & 1U) == 0) && (v != 6U)) {
+			if ((v == 2U) || (v == 8U)) {
 				while (m[q] != 3U) {
 					q -= t;
 				}
 			} else {
-				if (t < i) {
+				if (i > t) {
 					while ((m[q] != 3U) && (f != r) && (g != s)) {
 						q -= t;
 						r--;
@@ -69,12 +68,14 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 				}
 			}
 		} else {
-			if ((f == r) || (g == s)) {
+			u = 1U;
+
+			if ((v == 6U) || (v == 9U)) {
 				while (m[q] != 3U) {
 					q += t;
 				}
 			} else {
-				if (t < i) {
+				if (i > t) {
 					while ((m[q] != 3U) && (f != r) && (g != s)) {
 						q += t;
 						r++;
@@ -92,16 +93,9 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 
 		printf("Traversal cur pos after obstacle collision: %lu\n", q);
 
-		/*
-			non-diagonal keys in existing direction increment array
-				2 - left
-				6 - right
-				8 - up
-				9 - down
-			obstacle traversal with re-routed destinations using AvolittyPathfinderA recursive arg goes here
-		 */
-
 		if (q == l) {
+			/* applying non-obstacle traversal to grid */
+
 			if (u == 0U) {
 				while (a[p] != q) {
 					q += t;
@@ -120,6 +114,29 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 
 			if (o != 0U) {
 				*n = 1U;
+			}
+		} else {
+			/* traversing obstacles for recursive split dst */
+
+			if (u == 0U) {
+				/* d[3] + d[7] obstacle traversal starting directions
+					[v traversal direction]
+						[split obstacle traversal directions]
+					down
+					up
+						left + right
+					right
+					left
+						up + down
+					down right
+						left + up
+					down left
+						up + right
+					up left
+						right + down
+					up right
+						left + down
+				*/
 			}
 		}
 
