@@ -53,7 +53,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					q -= t;
 				}
 			} else {
-				if (i > t) {
+				if (v == 4U) {
 					while ((m[q] != 3U) && (f != r) && (g != s)) {
 						q -= t;
 						r--;
@@ -75,7 +75,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					q += t;
 				}
 			} else {
-				if (i > t) {
+				if (v == 1U) {
 					while ((m[q] != 3U) && (f != r) && (g != s)) {
 						q += t;
 						r++;
