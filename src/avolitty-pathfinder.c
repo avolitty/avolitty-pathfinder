@@ -1,14 +1,14 @@
 #include <stdio.h>
 
-static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned long int *c, unsigned long int *d, signed long int *e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned long int k, unsigned long int l, unsigned char *m, unsigned char *n, unsigned char o) {
+static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned long int *c, unsigned long int *d, unsigned long int *e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned long int k, unsigned long int l, unsigned char *m, unsigned char *n, unsigned char o) {
 	/*
 		a -> [array] cur pos
 		b -> [array] cur pos heights
 		c -> [array] cur pos widths
-		d -> [integer] length of cur pos array
-		e -> [array] traversal direction increments
+		d -> [array] traversal direction increments
+		e -> [integer] length of cur pos array
 		f -> [integer] dst height
-                g -> [integer] dst width
+		g -> [integer] dst width
 		h -> [integer] grid height
 		i -> [integer] grid width
 		j -> [integer] src pos
@@ -18,13 +18,13 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 		n -> pointer [integer] traversal status 0|1
 		o -> recursive argument 0|1
 	*/
-	unsigned long int p = *d;
+	unsigned long int p = *e;
 	unsigned long int q = 0UL;
 	unsigned long int r = 0UL;
 	unsigned long int s;
 	unsigned long int t;
 	unsigned long int u;
-	signed long int v;
+	unsigned long int v;
 	unsigned char w;
 
 	while (p != 0UL) {
@@ -46,10 +46,10 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 		s = a[p];
 		t = (s / h);
 		u = (s - ((s / i) * 10UL));
-		v = e[w];
+		v = d[w];
 
-		if (v < 0L) {
-			r = (((unsigned long int) (~v)) + 1UL);
+		if (((w & 1) == 0) && (w != 6)) {
+			r = v;
 
 			if ((f == t) || (g == u)) {
 				while (m[s] != 3U) {
@@ -71,7 +71,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 				}
 			}
 		} else {
-			q = ((unsigned long int) v);
+			q = v;
 
 			if ((f == t) || (g == u)) {
 				while (m[s] != 3U) {
@@ -149,7 +149,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 }
 
 void AvolittyPathfinder(unsigned long int *a, unsigned long int *b, unsigned long int *c, unsigned long int d, unsigned long int e, unsigned char *f, unsigned char g) {
-	signed long int h[10U] = {0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, (~d) + 1L, d};
+	unsigned long int h[10U] = {0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 1UL, 0UL, d, d};
 	unsigned long int i = d * e;
 	unsigned long int j = i;
 	unsigned long int k = 1UL;
@@ -171,12 +171,12 @@ void AvolittyPathfinder(unsigned long int *a, unsigned long int *b, unsigned lon
 	c[0UL] = (i - ((i / e) * 10UL));
 	l = h[2U];
 	f[l] = 3U;
-	h[0U] = (h[8U] - 1L);
-	h[1U] = (h[9U] - 1L);
-	h[2U] = -1L;
-	h[3U] = 0L;
-	h[4U] = (h[8U] + 1L);
-	h[5U] = (h[9U] + 1L);
+	h[0U] = (h[8U] + 1UL);
+	h[1U] = (h[9U] - 1UL);
+	h[2U] = 1UL;
+	h[3U] = 0UL;
+	h[4U] = (h[8U] - 1UL);
+	h[5U] = (h[9U] + 1UL);
 	m = (l / d);
 	n = (l - ((l / e) * 10UL));
 
@@ -185,10 +185,10 @@ void AvolittyPathfinder(unsigned long int *a, unsigned long int *b, unsigned lon
 			a -> [array] cur pos
 			b -> [array] cur pos heights
 			c -> [array] cur pos widths
-			o -> [integer] length of cur pos array
 			h -> [array] traversal direction increments
+			o -> [integer] length of cur pos array
 			m -> [integer] dst height
-                        n -> [integer] dst width
+			n -> [integer] dst width
 			d -> [integer] grid height
 			e -> [integer] grid width
 			i -> [integer] src pos
@@ -198,7 +198,7 @@ void AvolittyPathfinder(unsigned long int *a, unsigned long int *b, unsigned lon
 			q -> pointer [integer] traversal status 0|1
 		*/
 
-		AvolittyPathfinderA(a, b, c, o, h, m, n, d, e, i, j, l, f, q, p);
+		AvolittyPathfinderA(a, b, c, h, o, m, n, d, e, i, j, l, f, q, p);
 	}
 
 	return;
