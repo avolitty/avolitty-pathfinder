@@ -84,7 +84,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 				} else {
 					while ((m[q] != 3U) && (f != r) && (g != s)) {
 						q += t;
-						r--;
+						r++;
 						s++;
 					}
 				}
@@ -116,27 +116,57 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 				*n = 1U;
 			}
 		} else {
-			/* traversing obstacles for recursive split dst */
+			/* traversing obstacles for recursive split dst (visualizing to simplify from patterns)
+				[traversal direction]
+					[split obstacle directions to set new destinations [nested obstacle direction if first step in direction isn't an obstacle]]
+					[perpendicular obstacle direction to traverse with each step (mapped to previous directions) []]
+						adjusted dst position is 1 step in direction of a in [a [b]]
+												     [c [a]] */
 
 			if (u == 0U) {
-				/* d[3] + d[7] obstacle traversal starting directions
-					[v traversal direction]
-						[split obstacle traversal directions]
-					down
-					up
-						left + right
-					right
-					left
-						up + down
-					down right
-						left + up
-					down left
-						up + right
-					up left
-						right + down
-					up right
-						left + down
-				*/
+				if ((v == 2U) || (v == 8U)) {
+					if (v == 2U) {
+						/* [left]
+							[up [left]  + down [left]]
+							[right [up] + right [down]] */
+					} else {
+						/* [up]
+							[left [up]   + right [up]]
+							[down [left] + down [right]] */
+					}
+				} else {
+					if (v == 4U) {
+						/* [up right]
+							[left [up]   + down [right]]
+							[down [left] + left [down]] */
+					} else {
+						/* [up left]
+							[right [up]   + down [left]]
+							[down [right] + right [down]] */
+					}
+				}
+			} else {
+				if ((v == 6U) || (v == 9U)) {
+					if (v == 6U) {
+						/* [right]
+							[up [right] + down [right]]
+							[left [up]  + left [down]] */
+					} else {
+						/* [down]
+							[left [down] + right [down]]
+							[up [left]   + up [right]] */
+					}
+				} else {
+					if (v == 1U) {
+						/* [down left]
+							[up [left]  + right [down]]
+							[right [up] + up [right]] */
+					} else {
+						/* [down right]
+							[up [right] + left [down]]
+							[left [up]  + up [left]] */
+					}
+				}
 			}
 		}
 
