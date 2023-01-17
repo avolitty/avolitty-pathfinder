@@ -31,7 +31,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 		q = a[p];
                 r = b[p];
                 s = c[p];
-		v = (f > r);
+		v = ((unsigned char) (f > r));
 
 		if (f == r) {
 			v += 2U;
@@ -192,7 +192,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 }
 
 void AvolittyPathfinder(unsigned long int *a, unsigned long int *b, unsigned long int *c, unsigned long int d, unsigned long int e, unsigned char *f, unsigned char g) {
-	unsigned long int h[10U] = {0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 1UL, 0UL, d, d};
+	unsigned long int h[10U] = {0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 1UL, 0UL, 0UL, 0UL};
 	unsigned long int i = d * e;
 	unsigned long int j = i;
 	unsigned long int k = 1UL;
@@ -214,12 +214,14 @@ void AvolittyPathfinder(unsigned long int *a, unsigned long int *b, unsigned lon
 	c[0UL] = (i - ((i / e) * 10UL));
 	l = h[2U];
 	f[l] = 3U;
-	h[0U] = (h[8U] + 1UL);
-	h[1U] = (h[9U] - 1UL);
+	h[0U] = (d + 1UL);
+	h[1U] = (d - 1UL);
 	h[2U] = 1UL;
 	h[3U] = 0UL;
-	h[4U] = (h[8U] - 1UL);
-	h[5U] = (h[9U] + 1UL);
+	h[4U] = (d - 1UL);
+	h[5U] = (d + 1UL);
+	h[8U] = d;
+	h[9U] = d;
 	m = (l / d);
 	n = (l - ((l / e) * 10UL));
 
