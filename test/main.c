@@ -12,10 +12,10 @@ int main(void) {
                 0U, 0U, 0U, 0U, 0U, 3U, 0U, 0U, 0U, 0U,
                 0U, 0U, 0U, 0U, 0U, 3U, 0U, 0U, 0U, 0U,
                 0U, 0U, 0U, 3U, 3U, 3U, 0U, 0U, 0U, 0U,
-                0U, 0U, 0U, 0U, 0U, 3U, 0U, 0U, 0U, 0U,
-                0U, 0U, 0U, 0U, 0U, 3U, 0U, 0U, 0U, 0U,
+                0U, 0U, 0U, 3U, 0U, 3U, 3U, 3U, 0U, 0U,
+                0U, 0U, 0U, 3U, 0U, 3U, 2U, 0U, 0U, 0U,
                 0U, 3U, 3U, 3U, 3U, 3U, 0U, 0U, 0U, 0U,
-                0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 2U
+                0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U
         };
 
 	AvolittyPathfinder(b, c, d);

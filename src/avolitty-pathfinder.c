@@ -1,19 +1,20 @@
 #include <stdio.h>
 
-static void AvolittyPathfinderA(unsigned long int *a, unsigned long int b, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned char *k, unsigned char l) {
+static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned long int *c, unsigned long int *d, 
+unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned char *k, unsigned char l) {
 	/*
-		a -> [array] traversal direction increments
-		b -> [integer] grid height
-		c -> [integer] grid width
-		d -> [integer] cur pos
-		e -> [integer] grid length
-		f -> [integer] cur pos height
-		g -> [integer] cur pos width
-		h -> [integer] dst pos
-		i -> [integer] dst height
-		j -> [integer] dst width
-		k -> [array] grid
-		l -> [integer] 0|1 recursive status
+		*a -> [array] traversal direction increments
+		*b -> [integer] cur pos
+		*c -> [integer] cur pos height
+                *d -> [integer] cur pos width
+		e -> [integer] grid height
+                f -> [integer] grid width
+                g -> [integer] grid length
+                h -> [integer] dst pos
+                i -> [integer] dst height
+                j -> [integer] dst width
+                *k -> [array] grid
+                l -> [integer] 0|1 recursive status
 	*/
 	unsigned long int m;
 	unsigned long int n;
@@ -24,9 +25,9 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int b, unsig
 	unsigned long int s;
 	unsigned char t = 0U;
 	unsigned char u;
-	m = d;
-	n = f;
-	o = g;
+	m = *b;
+	n = *c;
+	o = *d;
 	u = ((unsigned char) (i > n));
 
 	if (i == n) {
@@ -101,18 +102,18 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int b, unsig
 		/* applying non-obstacle traversal to grid */
 
 		if (t == 0U) {
-			while (b != m) {
+			while (e != m) {
 				m += p;
 				k[m] = 8U;
 			}
 		} else {
-			while (b != m) {
+			while (e != m) {
 				m -= p;
 				k[m] = 8U;
 			}
 		}
 
-		d = h;
+		*b = h;
 		i = n;
 		j = o;
 	} else {
@@ -196,7 +197,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int b, unsig
 						/* alternate first direction is right */
 						q = (m + 1UL);
 
-						while ((k[q] == 3U) && (n != 0UL) && (c != o)) {
+						while ((k[q] == 3U) && (n != 0UL) && (f != o)) {
 							if (k[(q - p)] == 3U) {
 								/* perpendicular alternate first direction is up */
 								n--;
@@ -207,12 +208,21 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int b, unsig
 							}
 						}
 
-						t = ((unsigned char) ((n == 0UL) || (c == o)));
+						t = ((unsigned char) ((n == 0UL) || (f == o)));
 					}
 
 					if (t == 0U) {
 						k[q] = 2U; /* temporary */
-						printf("First split dst from obstacle traversal after obstacle collision: %lu\n", q);
+						*b = q;
+						*c = n;
+						*d = o;
+/*
+						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, (unsigned char) 1U);
+*/
+
+						if (l == 0U) {
+							printf("First split dst from obstacle traversal after obstacle collision: %lu\n", *b);
+						}
 					}
 
 					n = r;
@@ -238,7 +248,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int b, unsig
 						/* alternate second direction is down */
 						q = (m + p);
 
-						while ((k[q] == 3U) && (b != n) && (o != 0UL)) {
+						while ((k[q] == 3U) && (e != n) && (o != 0UL)) {
 							q--;
 
 							if (k[q] == 3U) {
@@ -250,12 +260,19 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int b, unsig
 							}
 						}
 
-						t = ((unsigned char) ((b == n) || (o == 0UL)));
+						t = ((unsigned char) ((e == n) || (o == 0UL)));
 					}
 
 					if (t == 0U) {
 						k[q] = 2U; /* temporary */
-						printf("Second split dst from obstacle traversal after obstacle collision: %lu\n", q);
+						*b = q;
+						*c = n;
+						*d = o;
+						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, (unsigned char) 1U);
+
+						if (l == 0U) {
+							printf("Second split dst from obstacle traversal after obstacle collision: %lu\n", *b);
+						}
 					}
 
 					/* .. */
@@ -265,15 +282,17 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int b, unsig
 	}
 
 	/* debug grid output */
-	m = e;
-	n = 0UL;
-	printf("%u ", k[n++]);
+	if (l == 0U) {
+		m = g;
+		n = 0UL;
+		printf("%u ", k[n++]);
 
-	while (m != n) {
-		printf("%u ", k[n]);
+		while (m != n) {
+			printf("%u ", k[n]);
 
-		if (((n++ + 1UL) % 10UL) == 0UL) {
-			printf("\n");
+			if (((n++ + 1UL) % 10UL) == 0UL) {
+				printf("\n");
+			}
 		}
 	}
 
@@ -290,11 +309,14 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 	unsigned long int d[10U] = {0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 1UL, 0UL, 0UL, 0UL};
 	unsigned long int e = a * b;
 	unsigned long int f = e;
-	unsigned long int g;
-	unsigned long int h;
+	unsigned long int g = 0UL;
+	unsigned long int h = 0UL;
 	unsigned long int i;
 	unsigned long int j;
 	unsigned long int k;
+	unsigned long int *l = &e;
+	unsigned long int *m = &g;
+	unsigned long int *n = &h;
 
 	while (e != 0UL) {
 		e--;
@@ -316,7 +338,7 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 	d[9U] = a;
 	j = (i / a);
 	k = (i - ((i / b) * 10UL));
-	AvolittyPathfinderA(d, a, b, e, f, g, h, i, j, k, c, (unsigned char) 0U);
+	AvolittyPathfinderA(d, l, m, n, a, b, f, i, j, k, c, (unsigned char) 0U);
 	AvolittyPathfinderB();
 	return;
 }
