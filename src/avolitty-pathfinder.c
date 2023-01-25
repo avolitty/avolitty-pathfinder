@@ -5,15 +5,15 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 		*a -> [array] traversal direction increments
 		*b -> [integer] cur pos
 		*c -> [integer] cur pos height
-                *d -> [integer] cur pos width
+		*d -> [integer] cur pos width
 		e -> [integer] grid height
-                f -> [integer] grid width
-                g -> [integer] grid length
-                h -> [integer] dst pos
-                i -> [integer] dst height
-                j -> [integer] dst width
-                *k -> [array] grid
-                l -> [integer] 0[main]|1[recursive]|2[debug] recursive status
+		f -> [integer] grid width
+		g -> [integer] grid length
+		h -> [integer] dst pos
+		i -> [integer] dst height
+		j -> [integer] dst width
+		*k -> [array] grid
+		l -> [integer] 0[main]|1[recursive]|2[debug] recursive status
 	*/
 	unsigned long int m;
 	unsigned long int n;
@@ -51,7 +51,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 			apply 1-step traversal if first step is an obstacle to prevent infinite loops
 	*/
 
-	printf("traversal direction key %u\n", v);
+	printf("traversal direction %u\n", q);
 
 	if (((v & 1U) == 0U) && (v != 6U)) {
 		if ((v == 2U) || (v == 8U)) {
@@ -157,20 +157,28 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					/* [left]
 						[up [left]   + down [left]]
 						[right [up]  + right [down]] */
+					printf("left\n");
+					return;
 				} else {
 					/* [up]
 						[left [up]    + right [up]]
 						[down [left]  + down [right]] */
+					printf("up\n");
+					return;
 				}
 			} else {
 				if (v == 4U) {
 					/* [up right]
 						[left [up]    + down [right]]
 						[down [left]  + left [down]] */
+					printf("up right\n");
+					return;
 				} else {
 					/* [up left]
 						[right [up]    + down [left]]
 						[down [right]  + right [down]] */
+					printf("up left\n");
+					return;
 				}
 			}
 		} else {
@@ -179,17 +187,22 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					/* [right]
 						[up [right] + down [right]]
 						[left [up]  + left [down]] */
+					printf("right\n");
+					return;
 				} else {
 					/* [down]
 						[left [down] + right [down]]
 						[up [left]   + up [right]] */
-					
+					printf("down\n");
+					return;
 				}
 			} else {
 				if (v == 1U) {
 					/* [down left]
 						[up [left]  + right [down]]
 						[right [up] + up [right]] */
+					printf("down left\n");
+					return;
 				} else {
 					/*
 					  [down right]
@@ -311,7 +324,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 		while (m != n) {
 			printf("%u ", k[n]);
 
-			if (((n++ + 1UL) % 10UL) == 0UL) {
+			if (((n++ + 1UL) % f) == 0UL) {
 				printf("\n");
 			}
 		}
@@ -347,20 +360,20 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 	}
 
 	e = d[1U];
-	g = (e / a);
-	h = (e - ((e / b) * 10UL));
+	g = (e / b);
+	h = (e % b);
 	i = d[2U];
 	c[i] = 3U;
-	d[0U] = (a + 1UL);
-	d[1U] = (a - 1UL);
+	d[0U] = (b + 1UL);
+	d[1U] = (b - 1UL);
 	d[2U] = 1UL;
 	d[3U] = 0UL;
-	d[4U] = (a - 1UL);
-	d[5U] = (a + 1UL);
-	d[8U] = a;
-	d[9U] = a;
-	j = (i / a);
-	k = (i - ((i / b) * 10UL));
+	d[4U] = (b - 1UL);
+	d[5U] = (b + 1UL);
+	d[8U] = b;
+	d[9U] = b;
+	j = (i / b);
+	k = (i % b);
 	AvolittyPathfinderA(d, l, m, n, a, b, f, i, j, k, c, (unsigned char) 0U);
 	AvolittyPathfinderB();
 	return;
