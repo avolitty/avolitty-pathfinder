@@ -171,8 +171,92 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					/* [up right]
 						[left [up]    + down [right]]
 						[down [left]  + left [down]] */
-					printf("up right\n");
-					return;
+					/*
+					r = (m - 1U);
+
+					if ((k[r] == 3U) && (p != 0UL)) {
+						while ((k[r] == 3U) && (e != o) && (p != 0UL)) {
+							r += q;
+
+							if (k[(r + q)] == 3U) {
+								o++;
+							} else {
+								p--;
+								r -= (q + 1UL);
+							}
+						}
+
+						u = ((unsigned char) ((e == o) || (p == 0UL)));
+					} else {
+						r = (m - q);
+
+                                                while ((k[r] == 3U) && (o != 0UL) && (p != 0UL)) {
+							r--;
+
+							if (k[r] == 3U) {
+								p--;
+							} else {
+								o--;
+								r -= (q - 1UL);
+							}
+						}
+
+						u = ((unsigned char) ((o == 0UL) || (p == 0UL)));
+					}
+
+					if (u == 0U) {
+						*b = r;
+						*c = o;
+						*d = p;
+						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, (unsigned char) 1U);
+					}
+
+					o = s;
+					p = t;
+					r = (m + q);
+
+					if ((k[r] == 3U) && (e != o)) {
+						while ((k[r] == 3U) && (e != o) && (p != 0UL)) {
+							r--;
+
+							if (k[r] == 3U) {
+								p--;
+							} else {
+								o++;
+								r += (q + 1UL);
+							}
+						}
+
+						u = ((unsigned char) ((e == o) || (p == 0UL)));
+					} else {
+						r = (m + 1UL);
+
+						while ((k[r] == 3U) && (e != o) && (f != p)) {
+							r += q;
+
+							if (k[r] == 3U) {
+								o++;
+							} else {
+								p++;
+								r -= (q - 1UL);
+							}
+						}
+
+						u = ((unsigned char) ((e == o) || (f == p)));
+					}
+
+					if (u == 0U) {
+						*b = r;
+						*c = o;
+						*d = p;
+						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, (unsigned char) 1U);
+
+						if (l == 0U) {
+							printf("Second split dst from obstacle traversal after obstacle collision: %lu\n", *b);
+							printf("Original src: %lu\n", n);
+							AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, (unsigned char) 1U);
+						}
+					}
 				} else {
 					/* [up left]
 						[right [up]    + down [left]]
@@ -212,13 +296,10 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					r = (m - q);
 
 					if ((k[r] == 3U) && (o != 0UL)) {
-						/* first direction is up */
-
 						while ((k[r] == 3U) && (o != 0UL) && (p != 0UL)) {
 							r--;
 
 							if (k[r] == 3U) {
-								/* perpendicular first direction is left */
 								p--;
 							} else {
 								o--;
@@ -228,12 +309,10 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 
 						u = ((unsigned char) ((o == 0UL) || (p == 0UL)));
 					} else {
-						/* alternate first direction is right */
 						r = (m + 1UL);
 
 						while ((k[r] == 3U) && (o != 0UL) && (f != p)) {
 							if (k[(r - q)] == 3U) {
-								/* perpendicular alternate first direction is up */
 								o--;
 								r -= q;
 							} else {
@@ -246,15 +325,10 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					}
 
 					if (u == 0U) {
-						k[r] = 2U; /* temporary */
 						*b = r;
 						*c = o;
 						*d = p;
 						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, (unsigned char) 1U);
-
-						if (l == 0U) {
-							printf("First split dst from obstacle traversal after obstacle collision: %lu\n", *b);
-						}
 					}
 
 					o = s;
@@ -262,11 +336,8 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					r = (m - 1UL);
 
 					if ((k[r] == 3U) && (p != 0UL)) {
-						/* second direction is left */
-
 						while ((k[r] == 3U) && (o != 0UL) && (p != 0UL)) {
 							if (k[(r - q)] == 3U) {
-								/* perpendicular second direction is up */
 								o--;
 								r -= q;
 							} else {
@@ -277,14 +348,12 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 
 						u = ((unsigned char) ((o == 0UL) || (p == 0UL)));
 					} else {
-						/* alternate second direction is down */
 						r = (m + q);
 
 						while ((k[r] == 3U) && (e != o) && (p != 0UL)) {
 							r--;
 
 							if (k[r] == 3U) {
-								/* perpendicular alternate second direction is left */
 								p--;
 							} else {
 								o++;
@@ -296,7 +365,6 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					}
 
 					if (u == 0U) {
-						k[r] = 2U; /* temporary */
 						*b = r;
 						*c = o;
 						*d = p;
