@@ -24,5 +24,5 @@ int main(void) {
 	a = ((unsigned long int) 15UL);
 	b = ((unsigned long int) 11UL);
 	AvolittyPathfinder(a, b, c);
-	return (int) a;
+	return 0;
 }

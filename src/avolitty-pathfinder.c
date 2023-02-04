@@ -29,21 +29,22 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 	n = m;
 	o = *c;
 	p = *d;
-	v = ((unsigned char) (i > o));
+	u = ((unsigned char) (i > o));
+	v = ((unsigned char) 0U);
 
 	if (i == o) {
-		v += 2U;
+		u += 2U;
 	}
 
 	if (j > p) {
-		v += 4U;
+		u += 4U;
 	}
 
 	if (j == p) {
-		v += 8U;
+		u += 8U;
 	}
 
-	q = a[v];
+	q = a[u];
 
 	/*
 		these cur pos [q] increments and decrements should
@@ -53,13 +54,13 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 
 	printf("traversal direction %u\n", q);
 
-	if (((v & 1U) == 0U) && (v != 6U)) {
-		if ((v == 2U) || (v == 8U)) {
+	if (((u & 1U) == 0U) && (u != 6U)) {
+		if ((u == 2U) || (u == 8U)) {
 			while (k[m] != 3U) {
 				m -= q;
 			}
 		} else {
-			if (v == 4U) {
+			if (u == 4U) {
 				while ((k[m] != 3U) & (i != o) && (j != p)) {
 					m -= q;
 					o--;
@@ -74,14 +75,14 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 			}
 		}
 	} else {
-		u = 1U;
+		v = 1U;
 
-		if ((v == 6U) || (v == 9U)) {
+		if ((u == 6U) || (u == 9U)) {
 			while (k[m] != 3U) {
 				m += q;
 			}
 		} else {
-			if (v == 1U) {
+			if (u == 1U) {
 				while ((k[m] != 3U) && (i != o) && (j != p)) {
 					m += p;
 					o++;
@@ -121,7 +122,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 	if (h == m) {
 		/* applying non-obstacle traversal to grid */
 
-		if (u == 0U) {
+		if (v == 0U) {
 			while (e != m) {
 				m += q;
 				k[m] = 8U;
@@ -151,9 +152,9 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 
 		q = a[8U];
 
-		if (u == 0U) {
-			if ((v == 2U) || (v == 8U)) {
-				if (v == 2U) {
+		if (v == 0U) {
+			if ((u == 2U) || (u == 8U)) {
+				if (u == 2U) {
 					/* [left]
 						[up [left]   + down [left]]
 						[right [up]  + right [down]] */
@@ -167,7 +168,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					return;
 				}
 			} else {
-				if (v == 4U) {
+				if (u == 4U) {
 					/* [up right]
 						[left [up]    + down [right]]
 						[down [left]  + left [down]] */
@@ -186,7 +187,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 							}
 						}
 
-						u = ((unsigned char) ((e == o) || (p == 0UL)));
+						v = ((unsigned char) ((e == o) || (p == 0UL)));
 					} else {
 						r = (m - q);
 
@@ -201,10 +202,10 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 							}
 						}
 
-						u = ((unsigned char) ((o == 0UL) || (p == 0UL)));
+						v = ((unsigned char) ((o == 0UL) || (p == 0UL)));
 					}
 
-					if (u == 0U) {
+					if (v == 0U) {
 						*b = r;
 						*c = o;
 						*d = p;
@@ -227,7 +228,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 							}
 						}
 
-						u = ((unsigned char) ((e == o) || (p == 0UL)));
+						v = ((unsigned char) ((e == o) || (p == 0UL)));
 					} else {
 						r = (m + 1UL);
 
@@ -242,10 +243,10 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 							}
 						}
 
-						u = ((unsigned char) ((e == o) || (f == p)));
+						v = ((unsigned char) ((e == o) || (f == p)));
 					}
 
-					if (u == 0U) {
+					if (v == 0U) {
 						*b = r;
 						*c = o;
 						*d = p;
@@ -266,8 +267,8 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 				}
 			}
 		} else {
-			if ((v == 6U) || (v == 9U)) {
-				if (v == 6U) {
+			if ((u == 6U) || (u == 9U)) {
+				if (u == 6U) {
 					/* [right]
 						[up [right] + down [right]]
 						[left [up]  + left [down]] */
@@ -281,7 +282,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					return;
 				}
 			} else {
-				if (v == 1U) {
+				if (u == 1U) {
 					/* [down left]
 						[up [left]  + right [down]]
 						[right [up] + up [right]] */
@@ -307,7 +308,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 							}
 						}
 
-						u = ((unsigned char) ((o == 0UL) || (p == 0UL)));
+						v = ((unsigned char) ((o == 0UL) || (p == 0UL)));
 					} else {
 						r = (m + 1UL);
 
@@ -321,10 +322,10 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 							}
 						}
 
-						u = ((unsigned char) ((o == 0UL) || (f == p)));
+						v = ((unsigned char) ((o == 0UL) || (f == p)));
 					}
 
-					if (u == 0U) {
+					if (v == 0U) {
 						*b = r;
 						*c = o;
 						*d = p;
@@ -346,7 +347,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 							}
 						}
 
-						u = ((unsigned char) ((o == 0UL) || (p == 0UL)));
+						v = ((unsigned char) ((o == 0UL) || (p == 0UL)));
 					} else {
 						r = (m + q);
 
@@ -361,10 +362,10 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 							}
 						}
 
-						u = ((unsigned char) ((e == o) || (p == 0UL)));
+						v = ((unsigned char) ((e == o) || (p == 0UL)));
 					}
 
-					if (u == 0U) {
+					if (v == 0U) {
 						*b = r;
 						*c = o;
 						*d = p;
