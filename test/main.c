@@ -2,10 +2,9 @@
 #include "../src/avolitty-pathfinder.h"
 
 int main(void) {
-	int a = 0;
-	unsigned long int b = 15UL;
-	unsigned long int c = 11UL;
-	unsigned char d[165UL] = {
+	unsigned long int a;
+	unsigned long int b;
+	unsigned char c[((unsigned long int) 165UL)] = {
 		1U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
 		0U, 0U, 0U, 0U, 0U, 3U, 0U, 0U, 0U, 0U, 0U,
 		0U, 0U, 0U, 0U, 0U, 3U, 0U, 0U, 0U, 0U, 0U,
@@ -22,6 +21,8 @@ int main(void) {
 		0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
 		0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U
 	};
-	AvolittyPathfinder(b, c, d);
-	return a;
+	a = ((unsigned long int) 15UL);
+	b = ((unsigned long int) 11UL);
+	AvolittyPathfinder(a, b, c);
+	return (int) a;
 }

@@ -410,39 +410,52 @@ void AvolittyPathfinderB() {
 }
 
 void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char *c) {
-	unsigned long int d[10U] = {0UL, 0UL, 0UL, 0UL, 0UL, 0UL, 1UL, 0UL, 0UL, 0UL};
-	unsigned long int e = a * b;
-	unsigned long int f = e;
-	unsigned long int g = 0UL;
-	unsigned long int h = 0UL;
+	unsigned long int d[((unsigned char) 10U)];
+	unsigned long int e;
+	unsigned long int f;
+	unsigned long int g;
+	unsigned long int h;
 	unsigned long int i;
 	unsigned long int j;
 	unsigned long int k;
-	unsigned long int *l = &e;
-	unsigned long int *m = &g;
-	unsigned long int *n = &h;
+	unsigned long int l;
+	unsigned long int m;
+	unsigned long int *n;
+	unsigned long int *o;
+	unsigned long int *p;
+	e = (a * b);
+	f = e;
+	g = ((unsigned long int) 1UL);
+	h = ((unsigned long int) 0UL);
+	l = ((unsigned long int) 0UL);
+	m = l;
+	n = &e;
+	o = &l;
+	p = &m;
 
-	while (e != 0UL) {
+	while (e != l) {
 		e--;
 		d[c[e]] = e;
 	}
 
-	e = d[1U];
-	g = (e / b);
-	h = (e % b);
-	i = d[2U];
-	c[i] = 3U;
-	d[0U] = (b + 1UL);
-	d[1U] = (b - 1UL);
-	d[2U] = 1UL;
-	d[3U] = 0UL;
-	d[4U] = (b - 1UL);
-	d[5U] = (b + 1UL);
-	d[8U] = b;
-	d[9U] = b;
+	e = d[((unsigned char) 1U)];
+	l = (e / b);
+	m = (e % b);
+	i = d[((unsigned char) 2U)];
+	c[i] = ((unsigned char) 3U);
+	d[((unsigned char) 0U)] = (b + g);
+	d[((unsigned char) 1U)] = (b - g);
+	d[((unsigned char) 2U)] = g;
+	d[((unsigned char) 3U)] = h;
+	d[((unsigned char) 4U)] = d[((unsigned char) 1U)];
+	d[((unsigned char) 5U)] = d[((unsigned char) 0U)];
+	d[((unsigned char) 6U)] = g;
+	d[((unsigned char) 7U)] = h;
+	d[((unsigned char) 8U)] = b;
+	d[((unsigned char) 9U)] = b;
 	j = (i / b);
 	k = (i % b);
-	AvolittyPathfinderA(d, l, m, n, a, b, f, i, j, k, c, (unsigned char) 0U);
+	AvolittyPathfinderA(d, n, o, p, a, b, f, i, j, k, c, (unsigned char) 0U);
 	AvolittyPathfinderB();
 	return;
 }
