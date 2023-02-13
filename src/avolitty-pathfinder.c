@@ -210,7 +210,7 @@ static void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsi
 					r = v;
 					t = (o + 1U);
 
-					if ((m[t] == 3U) && (g != q)) {
+					if ((m[t] == 3U) && (h != r)) {
 						while ((m[t] == 3U) && (g != q) && (h != r)) {
 							t += s;
 
