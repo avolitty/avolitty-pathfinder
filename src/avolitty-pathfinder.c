@@ -56,7 +56,8 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 		casting integers based on avolitty guidelines after pathfinding is functional
 	*/
 
-	printf("\ntraversal direction %u recursive %u\n", s, n);
+	printf("\ntraversal direction %u recursive %u index %u\n", s, n, w);
+	printf("traversal cur pos before step: %lu\n", o);
 
 	if (((w & 1U) == 0U) && (w != 6U)) {
 		if ((w == 2U) || (w == 8U)) {
@@ -88,13 +89,13 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 		} else {
 			if (w == 1U) {
 				while ((m[o] != 3U) && (k != q) && (l != r)) {
-					o += r;
+					o += s;
 					q++;
 					r--;
 				}
 			} else {
 				while ((m[o] != 3U) && (k != q) && (l != r)) {
-					o += r;
+					o += s;
 					q++;
 					r++;
 				}
@@ -123,7 +124,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 
 	u = q;
 	v = r;
-	printf("Traversal cur pos: %lu\n", o);
+	printf("traversal cur pos after step: %lu\n", o);
 
 	if (j == o) {
 		/* applying non-obstacle traversal to grid */
