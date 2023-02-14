@@ -61,8 +61,16 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 
 	if (((w & 1U) == 0U) && (w != 6U)) {
 		if ((w == 2U) || (w == 8U)) {
-			while (m[o] != 3U) {
-				o -= s;
+			if (w == 2U) {
+				while ((m[o] != 3U) && (r != 0UL)) {
+					o -= s;
+					r--;
+				}
+			} else {
+				while ((m[o] != 3U) && (q != 0UL)) {
+					o -= s;
+					q--;
+				}
 			}
 		} else {
 			if (w == 4U) {
@@ -83,8 +91,16 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 		x = 1U;
 
 		if ((w == 6U) || (w == 9U)) {
-			while (m[o] != 3U) {
-				o += s;
+			if (w == 6U) {
+				while ((m[o] != 3U) && (l != r)) {
+					o += s;
+					r++;
+				}
+			} else {
+				while ((m[o] != 3U) && (k != q)) {
+					o += s;
+					q++;
+				}
 			}
 		} else {
 			if (w == 1U) {
