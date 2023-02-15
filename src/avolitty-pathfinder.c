@@ -126,6 +126,10 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 		}
 	}
 
+	if (m[o] == 2U) {
+		return;
+	}
+
 	*d = o;
 	*e = q;
 	*f = r;
