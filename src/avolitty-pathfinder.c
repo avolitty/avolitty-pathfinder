@@ -28,6 +28,12 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 	unsigned char x;
 	unsigned char y;
 	o = *d;
+
+	if (m[o] != 2U) {
+		m[o] = 2U;
+		/* .. */
+	}
+
 	p = o;
 	q = *e;
 	r = *f;
@@ -125,7 +131,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 	*f = r;
 
 	if (m[o] != 3U) {
-		m[o] = 2U;
 		AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, z);
 		o = *d;
 		q = *e;
@@ -192,7 +197,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
@@ -240,7 +244,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				} else {
@@ -287,7 +290,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
@@ -335,7 +337,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				}
@@ -384,7 +385,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
@@ -446,7 +446,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				} else {
@@ -493,7 +492,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
@@ -541,7 +539,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				}
@@ -592,7 +589,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
@@ -640,7 +636,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				} else {
@@ -687,7 +682,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
@@ -735,7 +729,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				}
@@ -784,7 +777,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
@@ -832,7 +824,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				} else {
@@ -879,7 +870,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
@@ -927,7 +917,6 @@ void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned lo
 						*d = t;
 						*e = q;
 						*f = r;
-						m[t] = 2U;
 						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				}
