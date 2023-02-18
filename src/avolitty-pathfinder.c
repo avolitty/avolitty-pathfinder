@@ -1,11 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned long int *c, unsigned long int *d, unsigned long int *e, unsigned long int *f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned long int k, unsigned long int l, unsigned long int z, unsigned char *m, unsigned long int n) {
+void AvolittyPathfinderA(unsigned long int *b, unsigned long int *d, unsigned long int *e, unsigned long int *f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned long int k, unsigned long int l, unsigned long int z, unsigned char *m, unsigned long int n) {
 	/*
-		*a -> [array] obstacle traversal destinations for constellation mapping
 		*b -> [array] traversal direction increments
-		*c -> [integer] number of constellation points in *a
 		*d -> [integer] cur pos
 		*e -> [integer] cur pos height
 		*f -> [integer] cur pos width
@@ -129,7 +126,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 
 	if (m[o] != 3U) {
 		m[o] = 2U;
-		AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, z);
+		AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, z);
 		o = *d;
 		q = *e;
 		r = *f;
@@ -146,9 +143,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 	v = r;
 	printf("traversal cur pos after step: %lu\n", o);
 
-	if (j == o) {
-		/* .. */
-	} else {
+	if (j != o) {
 		s = b[8U];
 
 		if (y == 0U) {
@@ -198,7 +193,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
 					q = u;
@@ -246,7 +241,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				} else {
 					printf("obstacle traversal steps after collision from [up] non-obstacle traversal\n");
@@ -293,7 +288,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
 					q = u;
@@ -341,7 +336,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				}
 			} else {
@@ -390,7 +385,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
 					q = u;
@@ -452,7 +447,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				} else {
 					printf("obstacle traversal steps after collision from [up left] non-obstacle traversal\n");
@@ -499,7 +494,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
 					q = u;
@@ -547,7 +542,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				}
 			}
@@ -598,7 +593,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
 					q = u;
@@ -646,7 +641,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				} else {
 					printf("obstacle traversal steps after collision from [down] non-obstacle traversal\n");
@@ -693,7 +688,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
 					q = u;
@@ -741,7 +736,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				}
 			} else {
@@ -790,7 +785,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
 					q = u;
@@ -838,7 +833,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				} else {
 					printf("obstacle traversal steps after collision from [down right] non-obstacle traversal\n");
@@ -885,7 +880,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 
 					q = u;
@@ -933,7 +928,7 @@ void AvolittyPathfinderA(unsigned long int *a, unsigned long int *b, unsigned lo
 						*e = q;
 						*f = r;
 						m[t] = 2U;
-						AvolittyPathfinderA(a, b, c, d, e, f, g, h, i, j, k, l, z, m, n);
+						AvolittyPathfinderA(b, d, e, f, g, h, i, j, k, l, z, m, n);
 					}
 				}
 			}
@@ -976,7 +971,6 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 	unsigned long int k;
 	unsigned long int l;
 	unsigned long int m;
-	unsigned long int *n;
 	unsigned long int *o;
 	unsigned long int *p;
 	unsigned long int *q;
@@ -987,9 +981,7 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 	h = ((unsigned long int) 0UL);
 	l = ((unsigned long int) 0UL);
 	m = l;
-	n = calloc((size_t) g, sizeof(a));
 	o = &e;
-	p = &g;
 	q = &l;
 	r = &m;
 
@@ -999,7 +991,6 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 	}
 
 	e = d[((unsigned char) 1U)];
-	n[h] = e;
 	l = (e / b);
 	m = (e % b);
 	h = a;
@@ -1023,8 +1014,11 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 	d[((unsigned char) 9U)] = b;
 	j = (i / b);
 	k = (i % b);
-
-	AvolittyPathfinderA(n, d, p, o, q, r, a, b, f, i, j, k, h, c, (unsigned long int) 0UL);
+	AvolittyPathfinderA(d, o, q, r, a, b, f, i, j, k, h, c, (unsigned long int) 0UL);
+	e = *o;
+	c[e] = 2U;
+	g = f;
+	/* .. */
 	AvolittyPathfinderB();
 	return;
 }
