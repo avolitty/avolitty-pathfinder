@@ -1,25 +1,25 @@
 #include <stdio.h>
 
-unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned long int k, unsigned long int l, unsigned char * m) {
+unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned char * k) {
 	/*
 		* a -> [array] traversal direction increments
-		b -> [integer] grid height
-		c -> [integer] grid width
-		d -> [integer] dst pos
-		e -> [integer] cur dst pos
-		f -> [integer] grid length
-		g -> [integer] traversal steps
-		h -> [integer] cur dst height
-		i -> [integer] cur dst width
-		j -> [integer] src pos
-		k -> [integer] src height
-		l -> [integer] src width
-		* m -> [array] grid
+		b -> [integer] dst pos
+		c -> [integer] cur dst pos
+		d -> [integer] grid length
+		e -> [integer] traversal steps
+		f -> [integer] cur dst height
+		g -> [integer] cur dst width
+		h -> [integer] src pos
+		i -> [integer] src height
+		j -> [integer] src width
+		* k -> [array] grid
 	*/
 
+	unsigned long int l;
+	unsigned long int m;
 	unsigned long int n;
 	unsigned long int o;
-	unsigned long int p;
+	unsigned char p;
 	unsigned char q;
 	unsigned char r;
 	unsigned char s;
@@ -29,90 +29,92 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 	unsigned char w;
 	unsigned char x;
 	unsigned char y;
-	unsigned char z;
-	n = k;
-	o = l;
-	q = ((unsigned char) (d > k));
-	r = ((unsigned char) 12U);
-	s = ((unsigned char) 9U);
-	t = ((unsigned char) 8U);
-	u = ((unsigned char) 6U);
-	v = ((unsigned char) 4U);
-	w = ((unsigned char) 3U);
-	x = ((unsigned char) 2U);
-	y = ((unsigned char) 1U);
-	z = ((unsigned char) 0U);
+	l = i;
+	m = j;
+	n = ((unsigned long int) 9UL);
+	p = ((unsigned char) (b > i));
+	q = ((unsigned char) 12U);
+	r = ((unsigned char) 9U);
+	s = ((unsigned char) 8U);
+	t = ((unsigned char) 6U);
+	u = ((unsigned char) 4U);
+	v = ((unsigned char) 3U);
+	w = ((unsigned char) 2U);
+	x = ((unsigned char) 1U);
+	y = ((unsigned char) 0U);
 
-	if (d == k) {
-		q += x;
+	if (b == i) {
+		p += w;
 	}
 
-	if (i > l) {
-		q += v;
+	if (g > j) {
+		p += u;
 	}
 
-	if (i == l) {
-		q += t;
+	if (g == j) {
+		p += s;
 	}
 
-	p = a[q];
+	o = a[p];
 
-	if (((q & y) == z) && (q != u)) {
-		if ((q == x) || (q == t)) {
-			if (q == x) {
-				while ((m[j] != w) && (i != l)) {
-					j -= p;
-					i--;
-					m[j] = t;
+	if (((p & x) == y) && (p != t)) {
+		if ((p == w) || (p == s)) {
+			if (p == w) {
+				while (((k[h] & n) != y) && (g != j)) {
+					h -= o;
+					g--;
+
+					/* k[h] = s; */
 				}
 			} else {
-				while ((m[j] != w) && (h != k)) {
-					j -= p;
-					h--;
+				while (((k[h] & n) != y) && (f != i)) {
+					h -= o;
+					f--;
 				}
 			}
 		} else {
-			if (q == v) {
-				while ((m[j] != w) && (i != l) && (h != k)) {
-					j -= p;
-					h--;
-					i++;
+			if (p == u) {
+				while (((k[h] & n) != y) && (f != i) && (g != j)) {
+					h -= o;
+					f--;
+					g++;
 				}
 			} else {
-				while ((m[j] != w) && (h != k) && (i != l)) {
-					j -= p;
-					h--;
-					i--;
+				while (((k[h] & n) != y) && (f != i) && (g != j)) {
+					h -= o;
+					f--;
+					g--;
 				}
 			}
 		}
 	} else {
-		x = w;
 
-		if ((q == u) || (q == s)) {
-			if (q == u) {
-				while ((m[j] != w) && (i != l)) {
-					j += p;
-					i++;
+		w = v;
+
+		if ((p == t) || (p == r)) {
+			if (p == t) {
+				while (((k[h] & n) != y) && (g != j)) {
+					h += o;
+					g++;
 				}
 			} else {
-				while ((m[j] != w) && (h != k)) {
-					j += p;
-					h++;
+				while (((k[h] & n) != y) && (f != i)) {
+					h += o;
+					f++;
 				}
 			}
 		} else {
-			if (q == y) {
-				while ((m[j] != w) && (h != k) && (i != l)) {
-					j += p;
-					h++;
-					i--;
+			if (p == x) {
+				while (((k[h] & n) != y) && (f != i) && (g != j)) {
+					h += o;
+					f++;
+					g--;
 				}
 			} else {
-				while ((m[j] != w) && (h != k) && (i != l)) {
-					j += p;
-					h++;
-					i++;
+				while (((k[h] & n) != y) && (f != i) && (g != j)) {
+					h += o;
+					f++;
+					g++;
 				}
 			}
 		}
@@ -122,38 +124,38 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 	return f;
 }
 
-unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int b, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned long int k, unsigned char * l) {
-        /*
-                * a -> [array] traversal direction increments
-                b -> [integer] grid height
-                c -> [integer] grid width
-                d -> [integer] dst pos
-                e -> [integer] grid length
-                f -> [integer] traversal steps
-                g -> [integer] dst height
-                h -> [integer] dst width
-                i -> [integer] src pos
-                j -> [integer] src height
-                k -> [integer] src width
-                * l -> [array] grid
-        */
+unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int b, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned char * j) {
+	/*
+		* a -> [array] traversal direction increments
+		b -> [integer] dst pos
+		c -> [integer] grid length
+		d -> [integer] traversal steps
+		e -> [integer] dst height
+		f -> [integer] dst width
+		g -> [integer] src pos
+		h -> [integer] src height
+		i -> [integer] src width
+		* j -> [array] grid
+	*/
+	unsigned long int k;
+	unsigned long int l;
 	unsigned long int m;
 	unsigned long int n;
-	unsigned long int o;
-	unsigned char p;
-	m = e;
-	n = ((unsigned long int) 0UL);
-	o = e;
-	p = ((unsigned char) 1U);
+	unsigned char o;
+	k = c;
+	l = c;
+	m = ((unsigned long int) 0UL);
+	n = ((unsigned char) 1U);
 
-	while (m != n) {
-		m--;
+	while (k != m) {
+		k--;
 
-		if ((l[m] == p) && (i != m)) {
-			f = AvolittyPathfinderA(a, b, c, d, d, e, f, g, h, i, j, k, l);
+		if ((j[k] == n) && (g != k)) {
 
-			if ((f < o) && (f != n)) {
-				o = f;
+			d = AvolittyPathfinderA(a, b, b, c, d, e, f, g, h, i, j);
+
+			if ((d < l) && (d != m)) {
+				l = d;
 
 				/*
 					recursive traversals without redundant memory block
@@ -186,7 +188,7 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int b
 	}
 
 	/* converting steps with value of 1 to finalized path step if adjacent to a finalized path step */
-	return f;
+	return d;
 }
 
 void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char * c) {
@@ -287,8 +289,6 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 
 	/*
 		* d -> [array] traversal direction increments
-		a -> [integer] grid height
-		b -> [integer] grid width
 		e -> [integer] dst pos
 		f -> [integer] grid length
 		g -> [integer] traversal steps
@@ -299,7 +299,7 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 		m -> [integer] src width
 		* c -> [array] grid
         */
-	g = AvolittyPathfinderB(d, a, b, e, f, g, i, j, k, l, m, c);
+	g = AvolittyPathfinderB(d, e, f, g, i, j, k, l, m, c);
 
 	/* debug grid output */
 	h = 0UL;
