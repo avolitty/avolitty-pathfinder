@@ -4,7 +4,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 	/*
 		* a -> [array] traversal direction increments
 		b -> [integer] dst pos
-		c -> [integer] cur dst pos
+		c -> [integer] grid width
 		d -> [integer] grid length
 		e -> [integer] traversal steps
 		f -> [integer] cur dst height
@@ -13,6 +13,8 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 		i -> [integer] src height
 		j -> [integer] src width
 		* k -> [array] grid
+
+		re-alphabetizing and deleting unused variables after completing
 	*/
 
 	unsigned long int l;
@@ -190,28 +192,46 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 								h -= o;
 								i--;
 							}
+
+							k[h] -= s;
+						} else {
+							/* recursion sets e + y value for every space with 5 value */
 						}
 					}
 				}
 
 				if (y == z) {
-					e = ((unsigned long) z);
-
-					while (h != l) {
+					if (f == i && g == j && b != h) {
+						y = x;
+					} else {
+						e = ((unsigned long) z);
+						h -= n;
 						i--;
 						j--;
-						k[h] -= s;
-						h -= n;
+
+						while (h != l) {
+							i--;
+							j--;
+							k[h] -= s;
+							h -= n;
+						}
 					}
+				}
+
+				if (x == y) {
+					/* recursion sets e value for every space with 5 value */
 				}
 			}
 		}
 	}
 
-	/*
-		Traversing spaces recursively until an obstacle, temporary traversed space or destination position is reached.
-		Reverse path is traversed to reset spaces if obstacle is reached [for memory-efficient storage of path trees within grid array].
-	*/
+	if (b == h) {
+		/*
+			resets finalized grid path traversal spaces if traversal steps if (e != 0) and e is less than current traversal step value
+			current traversal step value should be a pointer
+		 */
+	}
+
 	return e;
 }
 
@@ -246,9 +266,10 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int q
 		if ((j[k] == p)) {
 			m = (k / q);
 			n = (k % q);
-			d = AvolittyPathfinderA(a, b, k, c, d, m, n, g, h, i, j);
+			d = AvolittyPathfinderA(a, b, q, c, d, m, n, g, h, i, j);
 
 			if ((d < l) && (d != o)) {
+				/* dst pos is reached from src */
 				l = d;
 
 				/*
