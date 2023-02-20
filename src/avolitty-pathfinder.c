@@ -30,6 +30,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 	unsigned char x;
 	unsigned char y;
 	unsigned char z;
+	e++;
 	l = h;
 	p = ((unsigned char) (f > i));
 	q = ((unsigned char) 5U);
@@ -65,6 +66,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				j--;
 
 				while ((k[h] < q) && (g != j)) {
+					e++;
 					j--;
 					k[h] += s;
 					h -= n;
@@ -73,6 +75,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				i--;
 
 				while ((k[h] < q) && (f != i)) {
+					e++;
 					i--;
 					k[h] += s;
 					h -= n;
@@ -85,6 +88,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				j++;
 
 				while ((k[h] < q) && (f != i) && (g != j)) {
+					e++;
 					i--;
 					j++;
 					k[h] += s;
@@ -94,6 +98,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				j--;
 
 				while ((k[h] < q) && (f != i) && (g != j)) {
+					e++;
 					i--;
 					j--;
 					k[h] += s;
@@ -110,6 +115,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				j++;
 
 				while ((k[h] < q) && (g != j)) {
+					e++;
 					j++;
 					k[h] += s;
 					h += n;
@@ -118,6 +124,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				i++;
 
 				while ((k[h] < q) && (f != i)) {
+					e++;
 					i++;
 					k[h] += s;
 					h += n;
@@ -130,6 +137,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				j--;
 
 				while ((k[h] < q) && (f != i) && (g != j)) {
+					e++;
 					i++;
 					j--;
 					k[h] += s;
@@ -139,6 +147,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				j++;
 
 				while ((k[h] < q) && (f != i) && (g != j)) {
+					e++;
 					i++;
 					j++;
 					k[h] += s;
@@ -148,6 +157,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				y = ((k[h] & r) == z);
 
 				if (x == y) {
+					e++;
 					k[h] += s;
 					m = h;
 
@@ -163,6 +173,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 						i++;
 
 						while ((k[h] < q) && (f != i)) {
+							e++;
 							k[h] += s;
 							h += o;
 							i++;
