@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned char * k) {
+void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned long int b, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned char * k) {
 	/*
 		* a -> [array] traversal direction increments
+		* aa -> [integer] current shortest traversal path length for traversal resetting
 		b -> [integer] dst pos
 		c -> [integer] grid width
 		d -> [integer] grid length
@@ -14,9 +15,15 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 		j -> [integer] src width
 		* k -> [array] grid
 
-		re-alphabetizing and deleting unused variables after completing
+		alphabetizing and deleting unused variables with a maximum of 26 variables per function scope after completing
+			using 0 values in a[3] and a[7]
 	*/
 
+	unsigned long int ab;
+	unsigned long int ac;
+	unsigned long int ad;
+	unsigned long int ae;
+	unsigned long int af;
 	unsigned long int l;
 	unsigned long int m;
 	unsigned long int n;
@@ -32,6 +39,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 	unsigned char x;
 	unsigned char y;
 	unsigned char z;
+	ab = ((unsigned long int) 0UL);
 	e++;
 	l = h;
 	p = ((unsigned char) (f > i));
@@ -181,7 +189,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 							i++;
 						}
 
-						y = (((k[h] < q) == x) || (b == h));
+						y = ((f == i) && (g == j));
 
 						if (y == z) {
 							h -= o;
@@ -195,16 +203,46 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 
 							k[h] -= s;
 						} else {
-							/* recursion sets e + y value for every space with 5 value */
+							if (b != h) {
+								ac = d;
+								ad = e;
+
+								while (ab != ac) {
+									ac--;
+
+									if (k[ac] == q) {
+										if (ac != h) {
+											ae = (ac / c);
+											af = (ac % c);
+											AvolittyPathfinderA(a, aa, b, c, d, e, ae, af, h, i, j, k);
+										}
+									}
+								}
+
+								ae = *aa;
+
+								if ((ad == ae) && (ae != ab)) {
+									y = z;
+									/* reversing invalid traversal */
+								}
+							} else {
+								y = (*aa > e);
+
+								if (x == y) {
+									*aa = e;
+								} else {
+									/* reversing invalid traversal */
+								}
+							}
 						}
 					}
 				}
 
 				if (y == z) {
-					if (f == i && g == j && b != h) {
+					if ((f == i) && (g == j)) {
 						y = x;
 					} else {
-						e = ((unsigned long) z);
+						e = ab;
 						h -= n;
 						i--;
 						j--;
@@ -217,22 +255,37 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 						}
 					}
 				}
-
-				if (x == y) {
-					/* recursion sets e value for every space with 5 value */
-				}
 			}
 		}
 	}
 
 	if (b == h) {
 		/*
-			resets finalized grid path traversal spaces if traversal steps if (e != 0) and e is less than current traversal step value
-			current traversal step value should be a pointer
-		 */
+			recursive traversals without redundant memory block
+				4 finalized
+				8 temporary
+				12 overlapped
+		*/
+
+		if ((*aa > e) && (e != ab)) {
+			*aa = e;
+
+			/*
+				re-finalized mask
+					while (whole grid)
+						4 & 8 -> 0
+						8 & 8 -> 8
+						12 & 8 -> 8
+
+					while (whole grid)
+						if (step == 8) {
+							8 >> 1
+						}
+			*/
+		}
 	}
 
-	return e;
+	return;
 }
 
 unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int q, unsigned long int b, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned char * j) {
@@ -254,58 +307,27 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int q
 	unsigned long int m;
 	unsigned long int n;
 	unsigned long int o;
+	unsigned long int x;
+	unsigned long int * y;
 	unsigned char p;
 	k = c;
 	l = c;
 	o = ((unsigned long int) 0UL);
+	x = o;
+	y = &x;
 	p = ((unsigned char) 5U);
 
 	while (k != o) {
 		k--;
 
-		if ((j[k] == p)) {
+		if (j[k] == p) {
 			m = (k / q);
 			n = (k % q);
-			d = AvolittyPathfinderA(a, b, q, c, d, m, n, g, h, i, j);
-
-			if ((d < l) && (d != o)) {
-				/* dst pos is reached from src */
-				l = d;
-
-				/*
-					recursive traversals without redundant memory block
-					4 finalized
-					8 temporary
-					12 overlapped
-
-					re-finalized mask
-					while (whole grid)
-
-						4 & 8 -> 0
-						8 & 8 -> 8
-						12 & 8 -> 8
-
-					while (whole grid)
-
-						if (step == 8) {
-							8 >> 1
-						}
-
-					reverting to finalized mask
-
-					while (whole grid)
-						4 & 7-> 4
-						8 & 7-> 0
-						12 & 7 -> 4
-				*/
-			}
-
-			/* debugging */
-			k = o;
+			AvolittyPathfinderA(a, y, b, q, c, d, m, n, g, h, i, j);
+			k = o; /* debugging */
 		}
 	}
 
-	/* Converting steps with value of 5 to finalized path step if adjacent to a finalized path step. */
 	return d;
 }
 
