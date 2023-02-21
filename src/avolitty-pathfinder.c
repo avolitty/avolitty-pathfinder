@@ -602,7 +602,6 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 		}
 	} else {
 		h += n;
-		w = v;
 
 		if ((p == t) || (p == r)) {
 			if (p == t) {
@@ -1191,6 +1190,9 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int q
 		if (j[k] == p) {
 			m = (k / q);
 			n = (k % q);
+
+			printf("k: %lu\n\n", k);
+
 			AvolittyPathfinderA(a, y, b, q, c, d, m, n, g, h, i, j);
 
 			n = 0UL;
@@ -1298,16 +1300,15 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 	c[k] = o;
 	l = (k / b);
 	m = (k % b);
-	d[p] = k;
+	d[p] = (b - g);
 	d[r] = g;
-	d[s] = (b - g);
+	d[s] = d[p];
 	d[t] = (b + g);
 	d[((unsigned char) 5U)] = d[t];
 	d[((unsigned char) 6U)] = g;
 	d[((unsigned char) 8U)] = b;
 	d[((unsigned char) 9U)] = b;
 	g--;
-
 	/*
 		* d -> [array] traversal direction increments
 		b -> [integer] grid width
