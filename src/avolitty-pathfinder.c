@@ -176,6 +176,79 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 						o = a[w];
 						h += o;
 						j++;
+
+						while ((k[h] < q) && (g != j)) {
+							e++;
+							k[h] += s;
+							h += o;
+							j++;
+						}
+
+						y = ((f == i) && (g == j));
+
+						if (y == z) {
+							h -= o;
+							j--;
+
+							while (h != m) {
+								k[h] -= s;
+								h -= o;
+								j--;
+							}
+
+							k[h] -= s;
+						} else {
+							if (b != h) {
+								ac = d;
+								ad = *aa;
+
+								while (ab != ac) {
+									ac--;
+
+									if (k[ac] == q) {
+										if (ac != h) {
+											ae = (ac / c);
+											af = (ac % c);
+											AvolittyPathfinderA(a, aa, b, c, d, e, ae, af, h, i, j, k);
+										}
+									}
+								}
+
+								ae = *aa;
+
+								if (ad == ae) {
+									y = z;
+									h -= o;
+									j--;
+
+									while (h != m) {
+										k[h] -= s;
+										h -= o;
+										j--;
+									}
+
+									k[h] -= s;
+								}
+							} else {
+								y = (*aa > e);
+
+								if (x == y) {
+									*aa = e;
+								} else {
+									y = z;
+									h -= o;
+									j--;
+
+									while (h != m) {
+										k[h] -= s;
+										h -= o;
+										j--;
+									}
+
+									k[h] -= s;
+								}
+							}
+						}
 					} else {
 						/* down traversal */
 						o = a[s];
