@@ -279,28 +279,18 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 	}
 
 	if (b == h) {
-		/*
-			recursive traversals without redundant memory block
-				4 finalized
-				8 temporary
-				12 overlapped
-		*/
-
 		if ((*aa > e) && (e != ab)) {
 			*aa = e;
+			ac = d;
 
-			/*
-				re-finalized mask
-					while (whole grid)
-						4 & 8 -> 0
-						8 & 8 -> 8
-						12 & 8 -> 8
+			while (ab != ac) {
+				ac--;
+				k[ac] &= s;
 
-					while (whole grid)
-						if (step == 8) {
-							8 >> 1
-						}
-			*/
+				if (k[ac] == s) {
+					k[ac] = u;
+				}
+			}
 		}
 	}
 
