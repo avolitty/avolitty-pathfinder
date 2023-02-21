@@ -1,12 +1,13 @@
 #include <stdio.h>
 
-void debug(unsigned long int x, unsigned long int y, unsigned long int a, unsigned long int b, unsigned long int c, unsigned char * d) {
+void debug(unsigned long int x, unsigned long int y, unsigned long int z, unsigned long int a, unsigned long int b, unsigned long int c, unsigned char * d) {
 	unsigned long int e;
 	e = ((unsigned long int) 0UL);
-	printf("f [cur dst height pos]: %lu\n", x);
 	printf("i [cur src height pos]: %lu\n", y);
-	printf("l [cur dst width pos]: %lu\n", a);
-	printf("j [cur src width pos]: %lu\n", b);
+	printf("j [cur src weight pos]: %lu\n", b);
+	printf("l [pos]: %lu\n", z);
+	printf("f [dst height pos]: %lu\n", x);
+	printf("g [dst width pos]: %lu\n", b);
 	printf("%u ", d[e++]);
 
 	while (c != e) {
@@ -93,7 +94,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 	printf("\nstep: %lu\n", n);
 	printf("traversal index: %u\n", p);
-	debug(f, i, l, j, d, k);
+	debug(f, i, l, g, j, d, k);
 
 
 
@@ -113,7 +114,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-				debug(f, i, l, j, d, k);
+				debug(f, i, l, g, j, d, k);
 
 
 
@@ -156,7 +157,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-					debug(f, i, l, j, d, k);
+					debug(f, i, l, g, j, d, k);
 
 
 
@@ -173,7 +174,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-				debug(f, i, l, j, d, k);
+				debug(f, i, l, g, j, d, k);
 
 
 
@@ -216,7 +217,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-					debug(f, i, l, j, d, k);
+					debug(f, i, l, g, j, d, k);
 
 
 
@@ -238,7 +239,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-				debug(f, i, l, j, d, k);
+				debug(f, i, l, g, j, d, k);
 
 
 
@@ -265,7 +266,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-						debug(f, i, l, j, d, k);
+						debug(f, i, l, g, j, d, k);
 
 
 
@@ -285,7 +286,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-							debug(f, i, l, j, d, k);
+							debug(f, i, l, g, j, d, k);
 
 
 
@@ -323,7 +324,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -348,7 +349,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -370,7 +371,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-						debug(f, i, l, j, d, k);
+						debug(f, i, l, g, j, d, k);
 
 
 
@@ -390,7 +391,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-							debug(f, i, l, j, d, k);
+							debug(f, i, l, g, j, d, k);
 
 
 
@@ -428,7 +429,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -453,7 +454,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -501,7 +502,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-					debug(f, i, l, j, d, k);
+					debug(f, i, l, g, j, d, k);
 
 
 
@@ -519,7 +520,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-				debug(f, i, l, j, d, k);
+				debug(f, i, l, g, j, d, k);
 
 
 
@@ -546,7 +547,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-						debug(f, i, l, j, d, k);
+						debug(f, i, l, g, j, d, k);
 
 
 
@@ -566,7 +567,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-							debug(f, i, l, j, d, k);
+							debug(f, i, l, g, j, d, k);
 
 
 
@@ -604,7 +605,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -629,7 +630,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -651,7 +652,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-						debug(f, i, l, j, d, k);
+						debug(f, i, l, g, j, d, k);
 
 
 
@@ -671,7 +672,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-							debug(f, i, l, j, d, k);
+							debug(f, i, l, g, j, d, k);
 
 
 
@@ -709,7 +710,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -734,7 +735,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -782,7 +783,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-					debug(f, i, l, j, d, k);
+					debug(f, i, l, g, j, d, k);
 
 
 
@@ -805,7 +806,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-				debug(f, i, l, j, d, k);
+				debug(f, i, l, g, j, d, k);
 
 
 
@@ -848,7 +849,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-					debug(f, i, l, j, d, k);
+					debug(f, i, l, g, j, d, k);
 
 
 
@@ -868,7 +869,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 				printf("b: %lu\n", b);
 				printf("h: %lu\n", h);
 				printf("k[h]: %lu\n", k[h]);
-				debug(f, i, l, j, d, k);
+				debug(f, i, l, g, j, d, k);
 
 
 
@@ -911,7 +912,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-					debug(f, i, l, j, d, k);
+					debug(f, i, l, g, j, d, k);
 
 
 
@@ -933,7 +934,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-				debug(f, i, l, j, d, k);
+				debug(f, i, l, g, j, d, k);
 
 
 
@@ -960,7 +961,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-						debug(f, i, l, j, d, k);
+						debug(f, i, l, g, j, d, k);
 
 
 
@@ -980,7 +981,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-							debug(f, i, l, j, d, k);
+							debug(f, i, l, g, j, d, k);
 
 
 
@@ -1018,7 +1019,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -1043,7 +1044,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -1065,7 +1066,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-						debug(f, i, l, j, d, k);
+						debug(f, i, l, g, j, d, k);
 
 
 
@@ -1085,7 +1086,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-							debug(f, i, l, j, d, k);
+							debug(f, i, l, g, j, d, k);
 
 
 
@@ -1123,7 +1124,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -1148,7 +1149,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -1158,48 +1159,62 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 					}
 				}
 
-				if ((b != h) && ((x == y) || ((f == i) && (g == j)))) {
-					ac = d;
-					ad = *aa;
 
-					while (ab != ac) {
-						ac--;
 
-						if (k[ac] == q) {
-							if (ac != h) {
-								ae = (ac / c);
-								af = (ac % c);
-								AvolittyPathfinderA(a, aa, b, c, d, e, ae, af, h, i, j, k);
+				printf("b-- %lu\n", b);
+				printf("h-- %lu\n", h);
+				printf("*aa-- %lu\n", *aa);
+
+
+
+				if (b != h) {
+					if ((x == y) || ((f == i) && (g == j))) {
+						ac = d;
+						ad = *aa;
+
+						while (ab != ac) {
+							ac--;
+
+							if (k[ac] == q) {
+								if (ac != h) {
+									ae = (ac / c);
+									af = (ac % c);
+									AvolittyPathfinderA(a, aa, b, c, d, e, ae, af, h, i, j, k);
+								}
 							}
+						}
+
+						ae = *aa;
+
+						if (ad == ae && ae != ab) {
+							y = z;
 						}
 					}
 
-					ae = *aa;
+					if (y == z) {
+						printf("b_ %lu\n", b);
+						printf("h_ %lu\n", h);
+						printf("e_ %lu\n", e);
 
-					if (ad == ae) {
-						y = z;
-					}
-				}
-
-				if (y == z) {
-					e = ab;
-					h -= n;
-					i--;
-					j++;
-
-					while (h != l) {
+						e = ab;
+						h -= n;
 						i--;
 						j++;
-						k[h] -= s;
-						h -= n;
+
+						while (h != l) {
+							i--;
+							j++;
+							k[h] -= s;
+							h -= n;
+						}
+
+
+
+						debug(f, i, l, g, j, d, k);
+
+
+
 					}
-
-
-
-					debug(f, i, l, j, d, k);
-
-
-
 				}
 			} else {
 				j++;
@@ -1214,7 +1229,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-				debug(f, i, l, j, d, k);
+				debug(f, i, l, g, j, d, k);
 
 
 
@@ -1241,7 +1256,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-						debug(f, i, l, j, d, k);
+						debug(f, i, l, g, j, d, k);
 
 
 
@@ -1261,7 +1276,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-							debug(f, i, l, j, d, k);
+							debug(f, i, l, g, j, d, k);
 
 
 
@@ -1299,7 +1314,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -1324,7 +1339,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -1346,7 +1361,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-						debug(f, i, l, j, d, k);
+						debug(f, i, l, g, j, d, k);
 
 
 
@@ -1366,7 +1381,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-							debug(f, i, l, j, d, k);
+							debug(f, i, l, g, j, d, k);
 
 
 
@@ -1404,7 +1419,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -1429,7 +1444,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-									debug(f, i, l, j, d, k);
+									debug(f, i, l, g, j, d, k);
 
 
 
@@ -1477,7 +1492,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-					debug(f, i, l, j, d, k);
+					debug(f, i, l, g, j, d, k);
 
 
 
@@ -1496,20 +1511,25 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 
 
-		printf("\nstarting finalization\n");
+		printf("\nstarting finalization %lu %lu \n", *aa, e);
 
 
 
-		if ((*aa > e) && (e != ab)) {
+		if ((*aa > e) || (*aa == ab)) {
 			*aa = e;
 			ac = d;
+			/* before optimization */
+			ad = ((unsigned char) 12U);
 
 			while (ab != ac) {
 				ac--;
-				k[ac] &= s;
 
-				if (k[ac] == s) {
-					k[ac] = u;
+				if ((k[ac] == s) || (k[ac] == u)) {
+					k[ac] -= u;
+				}
+
+				if (k[ac] == ad) {
+					k[ac] -= s;
 				}
 			}
 		}
