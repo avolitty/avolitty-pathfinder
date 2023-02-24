@@ -58,12 +58,6 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 	z = y;
 	zz = h;
 
-	/* debug */
-	if (f == i && g == j) {
-		printf("--");
-		return;
-	}
-
 	if (f == i) {
 		p += w;
 	}
@@ -992,7 +986,6 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 						}
 
 						k[h] = q;
-						ae = *aa;
 						y = z;
 					}
 
@@ -1196,7 +1189,6 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 									y = z;
 									h -= o;
 									i--;
-
 									v = s;
 
 									if (k[h] == u) {
@@ -1279,6 +1271,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 				}
 			}
 		} else {
+
 			while (ab != ac) {
 				ac--;
 
@@ -1327,12 +1320,13 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int q
 		if (j[k] == p) {
 			m = (k / q);
 			n = (k % q);
-			AvolittyPathfinderA(a, y, b, q, c, d, m, n, g, h, i, j, 0UL);
+			AvolittyPathfinderA(a, y, b, q, c, d, m, n, g, h, i, j, g);
 	        }
+
+		/* adding finalization process for each traversal waypoint with recursion level 0 for shortest path resets */
 	}
 
 	k = c;
-
 	printf("%u ", j[o++]);
 
         while (k != o) {
