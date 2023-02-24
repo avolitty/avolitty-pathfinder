@@ -111,7 +111,6 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 				/* left traversal */
 				y = (k[h] == q);
-				ad = *aa;
 
 				if (b != h) {
 					if ((x == y) && (f == i) && (g == j)) {
@@ -129,17 +128,11 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 						}
 
 						k[h] = q;
-						ae = *aa;
+					}
 
-						if ((ad == ae) && (ab != ae)) {
-							y = z;
-						}
-					}
-y = z; /* debug */
+					y = z;
 				} else {
-					if ((ad > e) || (ad == ab)) {
-						y = x;
-					}
+					y = (*aa > e);
 				}
 
 				if (y == z) {
@@ -170,7 +163,6 @@ y = z; /* debug */
 
 				/* up traversal */
 				y = (k[h] == q);
-				ad = *aa;
 
 				if (b != h) {
 					if ((x == y) && (f == i) && (g == j)) {
@@ -188,16 +180,12 @@ y = z; /* debug */
 						}
 
 						k[h] = q;
-						ae = *aa;
-
-						if ((ad == ae) && (ab != ae)) {
-							y = z;
-						}
 					}
-y = z; /* debug */
+
+					y = z;
 				} else {
-					if ((ad > e) || (ad == ab)) {
-						y = x;
+					if (x == y) {
+						y = (*aa > e);
 					}
 				}
 
@@ -274,7 +262,6 @@ y = z; /* debug */
 						} else {
 							if (b != h) {
 								ac = d;
-								ad = *aa;
 								k[h] = t;
 
 								while (ab != ac) {
@@ -307,10 +294,7 @@ y = z; /* debug */
 							} else {
 								y = (*aa > e);
 
-								if (x == y) {
-									*aa = e;
-								} else {
-									y = z;
+								if (y == z) {
 									h -= o;
 									j--;
 									v = s;
@@ -363,7 +347,6 @@ y = z; /* debug */
 						} else {
 							if (b != h) {
 								ac = d;
-								ad = *aa;
 								k[h] = t;
 
 								while (ab != ac) {
@@ -396,10 +379,7 @@ y = z; /* debug */
 							} else {
 								y = (*aa > e);
 
-								if (x == y) {
-									*aa = e;
-								} else {
-									y = z;
+								if (y == z) {
 									h += o;
 									i++;
 									v = s;
@@ -421,8 +401,6 @@ y = z; /* debug */
 					}
 				}
 
-				ad = *aa;
-
 				if (b != h) {
 					if ((x == y) || ((f == i) && (g == j))) {
 						ac = d;
@@ -439,16 +417,12 @@ y = z; /* debug */
 						}
 
 						k[h] = q;
-						ae = *aa;
-
-						if ((ad == ae) && (ab != ae)) {
-							y = z;
-						}
 					}
-y = z; /* debug */
+
+					y = z;
 				} else {
-					if ((ad > e) || (ad == ab)) {
-						y = x;
+					if (x == y) {
+						y = (*aa > e);
 					}
 				}
 
@@ -523,7 +497,6 @@ y = z; /* debug */
 						} else {
 							if (b != h) {
 								ac = d;
-								ad = *aa;
 								k[h] = t;
 
 								while (ab != ac) {
@@ -556,10 +529,7 @@ y = z; /* debug */
 							} else {
 								y = (*aa > e);
 
-								if (x == y) {
-									*aa = e;
-								} else {
-									y = z;
+								if (y == z) {
 									h += o;
 									j++;
 									v = s;
@@ -612,7 +582,6 @@ y = z; /* debug */
 						} else {
 							if (b != h) {
 								ac = d;
-								ad = *aa;
 								k[h] = t;
 
 								while (ab != ac) {
@@ -645,10 +614,7 @@ y = z; /* debug */
 							} else {
 								y = (*aa > e);
 
-								if (x == y) {
-									*aa = e;
-								} else {
-									y = z;
+								if (y == z) {
 									h += o;
 									i++;
 									v = s;
@@ -670,8 +636,6 @@ y = z; /* debug */
 					}
 				}
 
-				ad = *aa;
-
 				if (b != h) {
 					if ((x == y) || ((f == i) && (g == j))) {
 						ac = d;
@@ -688,16 +652,12 @@ y = z; /* debug */
 						}
 
 						k[h] = q;
-						ae = *aa;
-
-						if ((ad == ae) && (ab != ae)) {
-							y = z;
-						}
 					}
-y = z; /* debug */
+
+					y = z;
 				} else {
-					if ((ad > e) || (ad == ab)) {
-						y = x;
+					if (x == y) {
+						y = (*aa > e);
 					}
 				}
 
@@ -737,7 +697,6 @@ y = z; /* debug */
 
 				/* right traversal */
 				y = (k[h] == q);
-				ad = *aa;
 
 				if (b != h) {
 					if (((x == y) && (f == i)) && (g == j)) {
@@ -755,17 +714,12 @@ y = z; /* debug */
 						}
 
 						k[h] = q;
-						ae = *aa;
+					}
 
-						if ((ad == ae) && (ab != ae)) {
-							y = z;
-						}
-					}
-y = z; /* debug */
+					y = z;
 				} else {
-					if ((ad > e) || (ad == ab)) {
-						y = x;
-					}
+					ad = *aa;
+					y = (ad > e);
 				}
 
 				if (y == z) {
@@ -796,7 +750,6 @@ y = z; /* debug */
 
 				/* down traversal */
 				y = (k[h] == q);
-				ad = *aa;
 
 				if (b != h) {
 					if (((x == y) && (f == i)) && (g == j)) {
@@ -814,17 +767,11 @@ y = z; /* debug */
 						}
 
 						k[h] = q;
-						ae = *aa;
+					}
 
-						if ((ad == ae) && (ab != ae)) {
-							y = z;
-						}
-					}
-y = z; /* debug */
+					y = z;
 				} else {
-					if ((ad > e) || (ad == ab)) {
-						y = x;
-					}
+					y = (*aa > e);
 				}
 
 				if (y == z) {
@@ -900,7 +847,6 @@ y = z; /* debug */
 						} else {
 							if (b != h) {
 								ac = d;
-								ad = *aa;
 								k[h] = t;
 
 								while (ab != ac) {
@@ -933,10 +879,7 @@ y = z; /* debug */
 							} else {
 								y = (*aa > e);
 
-								if (x == y) {
-									*aa = e;
-								} else {
-									y = z;
+								if (y == z) {
 									h += o;
 									j++;
 									v = s;
@@ -989,7 +932,6 @@ y = z; /* debug */
 						} else {
 							if (b != h) {
 								ac = d;
-								ad = *aa;
 								k[h] = t;
 
 								while (ab != ac) {
@@ -1022,10 +964,7 @@ y = z; /* debug */
 							} else {
 								y = (*aa > e);
 
-								if (x == y) {
-									*aa = e;
-								} else {
-									y = z;
+								if (y == z) {
 									h -= o;
 									i--;
 									v = s;
@@ -1047,8 +986,6 @@ y = z; /* debug */
 					}
 				}
 
-				ad = *aa;
-
 				if (b != h) {
 					if ((x == y) || ((f == i) && (g == j))) {
 						ac = d;
@@ -1065,17 +1002,11 @@ y = z; /* debug */
 						}
 
 						k[h] = q;
-						ae = *aa;
+					}
 
-						if ((ad == ae) && (ab != ae)) {
-							y = z;
-						}
-					}
-y = z; /* debug */
+					y = z;
 				} else {
-					if ((ad > e) || (ad == ab)) {
-						y = x;
-					}
+					y = (*aa > e);
 				}
 
 				if (y == z) {
@@ -1149,7 +1080,6 @@ y = z; /* debug */
 						} else {
 							if (b != h) {
 								ac = d;
-								ad = *aa;
 								k[h] = t;
 
 								while (ab != ac) {
@@ -1182,10 +1112,7 @@ y = z; /* debug */
 							} else {
 								y = (*aa > e);
 
-								if (x == y) {
-									*aa = e;
-								} else {
-									y = z;
+								if (y == z) {
 									h -= o;
 									j--;
 									v = s;
@@ -1238,7 +1165,6 @@ y = z; /* debug */
 						} else {
 							if (b != h) {
 								ac = d;
-								ad = *aa;
 								k[h] = t;
 
 								while (ab != ac) {
@@ -1271,10 +1197,7 @@ y = z; /* debug */
 							} else {
 								y = (*aa > e);
 
-								if (x == y) {
-									*aa = e;
-								} else {
-									y = z;
+								if (y == z) {
 									h -= o;
 									i--;
 									v = s;
@@ -1296,8 +1219,6 @@ y = z; /* debug */
 					}
 				}
 
-				ad = *aa;
-
 				if (b != h) {
 					if ((x == y) || ((f == i) && (g == j))) {
 						ac = d;
@@ -1314,16 +1235,12 @@ y = z; /* debug */
 						}
 
 						k[h] = q;
-						ae = *aa;
-
-						if ((ad == ae) && (ab != ae)) {
-							y = z;
-						}
 					}
-y = z; /* debug */
+
+					y = z;
 				} else {
-					if ((ad > e) || (ad == ab)) {
-						y = x;
+					if (x == y) {
+						y = (*aa > e);
 					}
 				}
 
@@ -1349,16 +1266,27 @@ y = z; /* debug */
 		}
 	}
 
+	/*
+		logic for valid grid finalization
+			if (4 isn't adjacent to 6)
+			if (4 is only adjacent to one 6 and one 4)
+			if (4 is adjacent to 6 only on opposite sides (diagonally or non diagonally))
+				ignoring
+			else
+				finalizing remaining 4's to 0 and finalize 8's and 12's as 4
+	*/
+
 	if (b == h) {
 		ac = d;
 		ad = ((unsigned char) 12U);
 
-		if ((*aa > e) || (*aa == ab)) {
+		if (*aa > e) {
 			*aa = e;
 			ad = ((unsigned char) 12U);
 
 			while (ab != ac) {
 				ac--;
+				/* validating adjacent 4, 6 or 12 before reverting previous 4 to prevent overflow + invalid path traversal */
 
 				if ((k[ac] == s) || (k[ac] == u)) {
 					k[ac] -= u;
@@ -1368,20 +1296,9 @@ y = z; /* debug */
 					k[ac] -= s;
 				}
 			}
-		} else {
-/*
-			while (ab != ac) {
-				ac--;
-
-				if (k[ac] == s || k[ac] == ad) {
-					k[ac] -= s;
-				}
-			}
-*/
 		}
 	}
 
-	debug(f, i, l, g, j, d, k, e);
 	return;
 }
 
@@ -1411,11 +1328,13 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int q
 	l = c;
 	o = ((unsigned long int) 0UL);
 	x = o;
-	y = &x;
+	y = &l;
 	p = ((unsigned char) 5U);
 
+/*
 	while (k != o) {
 		k--;
+		k = 88;
 
 		if (j[k] == p) {
 			m = (k / q);
@@ -1423,7 +1342,8 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int q
 			AvolittyPathfinderA(a, y, b, q, c, d, m, n, g, h, i, j, g);
 	        }
 
-		/* adding finalization process for each traversal waypoint with recursion level 0 for shortest path resets */
+		k = o;
+		adding finalization process for each traversal waypoint with recursion level 0 for shortest path resets
 	}
 
 	k = c;
@@ -1438,6 +1358,7 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int q
         }
 
         printf("\n");
+*/
 	return d;
 }
 
