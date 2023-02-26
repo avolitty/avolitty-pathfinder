@@ -1302,7 +1302,14 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 			5 12 q
 			7 11 y
 		*/
-/*		debug(f, i, l, g, j, d, k, e);
+		debug(f, i, l, g, j, d, k, e);
+		/*
+			adjacent [6] should always be prioritized and traversed instead of [4]
+			adding necessary recursion for instance of split [6] waypoints
+				0 0 6
+				0 6 4
+				0 0 6
+		*/
 
 		while (p == z) {
 			if (ai != z) {
@@ -1428,7 +1435,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 			}
 
 			if ((p == z) && (aj != z)) {
-				l = (h + a[x]);
+				l = (h - a[v]);
 
 				if ((k[l] == u) && (l != ac)) {
 					ac = h;
@@ -1447,7 +1454,7 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 			}
 
 			if ((p == z) && (c != aj)) {
-				l = (h + a[q]);
+				l = (h + a[v]);
 
 				if ((k[l] == u) && (l != ac)) {
 					ac = h;
@@ -1467,7 +1474,6 @@ void AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned
 
 			p = (p != x);
 		}
-*/
 	}
 
 	return;
@@ -1517,7 +1523,6 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int r
 	}
 
 	k = c;
-/*
 	printf("%u ", j[o++]);
 
         while (k != o) {
@@ -1527,7 +1532,7 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int r
                         printf("\n");
                 }
         }
-*/
+
         printf("\n");
 	return d;
 }
