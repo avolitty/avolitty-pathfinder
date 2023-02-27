@@ -1,28 +1,5 @@
 #include <stdio.h>
 
-void debug(unsigned long int x, unsigned long int y, unsigned long int z, unsigned long int a, unsigned long int b, unsigned long int c, unsigned char * d, unsigned long int e) {
-	unsigned long int f;
-	f = ((unsigned long int) 0UL);
-	printf("i [cur src height pos]: %lu\n", y);
-	printf("j [cur src weight pos]: %lu\n", b);
-	printf("l [pos]: %lu\n", z);
-	printf("f [dst height pos]: %lu\n", x);
-	printf("g [dst width pos]: %lu\n", b);
-	printf("e [traversal step count]: %lu\n", e);
-	printf("%u ", d[f++]);
-
-	while (c != f) {
-		printf("%u ", d[f]);
-
-		if (((f++ + 1UL) % 11UL) == 0UL) {
-			printf("\n");
-		}
-	}
-
-	printf("\n");
-	return;
-}
-
 unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned long int b, unsigned long int ah, unsigned long int ai, unsigned long int aj, unsigned long int ak, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned char * k, unsigned long int zz) {
 	/*
 		* a -> [array] traversal direction increments
@@ -1326,11 +1303,11 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int r
 	unsigned long int o;
 	unsigned long int x;
 	unsigned long int * y;
+	unsigned long int z;
 	unsigned char p;
 	k = c;
 	l = c;
 	o = ((unsigned long int) 0UL);
-	x = o;
 	y = &l;
 	p = ((unsigned char) 5U);
 
@@ -1341,7 +1318,7 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int r
 			m = (k / q);
 			n = (k % q);
 			AvolittyPathfinderA(a, y, b, g, h, i, r, q, c, d, m, n, g, h, i, j, g);
-	        }
+		}
 	}
 
 	k = c;
@@ -1356,10 +1333,10 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int r
         }
 
         printf("\n");
-	return d;
+	return l;
 }
 
-void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char * c) {
+unsigned long int AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char * c) {
 	unsigned long int d[((unsigned char) 10U)];
 	unsigned long int e;
 	unsigned long int f;
@@ -1473,5 +1450,5 @@ void AvolittyPathfinder(unsigned long int a, unsigned long int b, unsigned char 
 	g = AvolittyPathfinderB(d, a, b, e, f, g, i, j, k, l, m, c);
 	printf("\n");
 	/* .. */
-	return;
+	return g;
 }
