@@ -1312,18 +1312,6 @@ unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int r
 		}
 	}
 
-	k = c;
-	printf("%u ", j[o++]);
-
-        while (k != o) {
-                printf("%u ", j[o]);
-
-                if (((o++ + 1UL) % 11UL) == 0UL) {
-                        printf("\n");
-                }
-        }
-
-        printf("\n");
 	return l;
 }
 
@@ -1439,7 +1427,8 @@ unsigned long int AvolittyPathfinder(unsigned long int a, unsigned long int b, u
 		* c -> [array] grid
 	*/
 	g = AvolittyPathfinderB(d, a, b, e, f, g, i, j, k, l, m, c);
-	printf("\n");
+	c[k] = s;
+	c[e] = r;
 	/* .. */
 	return g;
 }
