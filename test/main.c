@@ -34,6 +34,10 @@ int main(void) {
 	a *= b;
 	printf("%u ", g[e++]);
 
+	if (a == f) {
+		f = d;
+	}
+
 	while (a != e) {
 		printf("%u ", g[e]);
 
