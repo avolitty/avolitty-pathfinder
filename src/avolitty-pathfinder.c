@@ -1,25 +1,7 @@
 #include <stdio.h>
 
 unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int * aa, unsigned long int b, unsigned long int ah, unsigned long int ai, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned char * k) {
-	/*
-		* a -> [array] traversal direction increments
-		* aa -> [integer] current shortest traversal path length for traversal resetting
-		b -> [integer] dst pos
-		ah -> [integer] src pos
-		ai -> [integer] src height
-		c -> [integer] grid width
-		d -> [integer] grid length
-		e -> [integer] traversal steps
-		f -> [integer] cur dst height
-		g -> [integer] cur dst width
-		h -> [integer] cur src pos
-		i -> [integer] cur src height
-		j -> [integer] cur src width
-		* k -> [array] grid
-
-		alphabetizing and deleting unused variables with a maximum of 26 variables per function scope after completing
-
-	*/
+	/* alphabetizing and deleting unused variables with a maximum of 26 variables per function scope */
 	unsigned long int ab;
 	unsigned long int ac;
 	unsigned char ad;
@@ -83,8 +65,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 					k[h] += s;
 					h -= n;
 				}
-
-				/* left traversal */
 
 				if (*aa > e) {
 					if (b != h) {
@@ -158,8 +138,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 					k[h] += s;
 					h -= n;
 				}
-
-				/* up traversal */
 
 				if (*aa > e) {
 					if (b != h) {
@@ -241,8 +219,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 					h -= n;
 				}
 
-				/* up right traversal */
-
 				if (*aa > e) {
 					if ((k[h] == z) || (k[h] == u)) {
 						e++;
@@ -250,7 +226,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 						m = h;
 
 						if (f == i) {
-							/* right traversal */
 							o = a[w];
 							h += o;
 							j++;
@@ -344,7 +319,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 								k[h] -= s;
 							}
 						} else {
-							/* up traversal [] */
 							o = a[s];
 							h -= o;
 							i--;
@@ -515,8 +489,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 					h -= n;
 				}
 
-				/* up left */
-
 				if (*aa > e) {
 					if ((k[h] == z) || (k[h] == u)) {
 						e++;
@@ -524,7 +496,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 						m = h;
 
 						if (f == i) {
-							/* left traversal */
 							o = a[w];
 							h -= o;
 							j--;
@@ -617,7 +588,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 								k[h] -= s;
 							}
 						} else {
-							/* up traversal */
 							o = a[s];
 							h -= o;
 							i--;
@@ -793,8 +763,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 					h += n;
 				}
 
-				/* right traversal */
-
 				if (*aa > e) {
 					if (b != h) {
 						if ((f == i) && (g == j)) {
@@ -867,8 +835,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 					k[h] += s;
 					h += n;
 				}
-
-				/* down traversal */
 
 				if (*aa > e) {
 					if (b != h) {
@@ -948,8 +914,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 					h += n;
 				}
 
-				/* down left traversal */
-
 				if (*aa > e) {
 					if ((k[h] == z) || (k[h] == u)) {
 						e++;
@@ -957,7 +921,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 						m = h;
 
 						if (f == i) {
-							/* left traversal */
 							o = a[w];
 							h -= o;
 							j--;
@@ -1050,7 +1013,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 								k[h] -= s;
 							}
 						} else {
-							/* down traversal */
 							o = a[s];
 							h += o;
 							i++;
@@ -1221,8 +1183,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 					h += n;
 				}
 
-				/* down right traversal */
-
 				if (*aa > e) {
 					if ((k[h] == z) || (k[h] == u)) {
 						e++;
@@ -1230,7 +1190,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 						m = h;
 
 						if (f == i) {
-							/* right traversal */
 							o = a[w];
 							h += o;
 							j++;
@@ -1323,7 +1282,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 								k[h] -= s;
 							}
 						} else {
-							/* down traversal */
 							o = a[s];
 							h += o;
 							i++;
@@ -1512,20 +1470,6 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 }
 
 unsigned long int AvolittyPathfinderB(unsigned long int * a, unsigned long int r, unsigned long int q, unsigned long int b, unsigned long int c, unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned char * j) {
-	/*
-		* a -> [array] traversal direction increments
-		r -> [integer] grid height
-		q -> [integer] grid width
-		b -> [integer] dst pos
-		c -> [integer] grid length
-		d -> [integer] traversal steps
-		e -> [integer] dst height
-		f -> [integer] dst width
-		g -> [integer] src pos
-		h -> [integer] src height
-		i -> [integer] src width
-		* j -> [array] grid
-	*/
 	unsigned long int k;
 	unsigned long int l;
 	unsigned long int m;
@@ -1663,23 +1607,8 @@ unsigned long int AvolittyPathfinder(unsigned long int a, unsigned long int b, u
 	d[((unsigned char) 8U)] = b;
 	d[((unsigned char) 9U)] = b;
 	g--;
-	/*
-		* d -> [array] traversal direction increments
-		a -> [integer] grid height
-		b -> [integer] grid width
-		e -> [integer] dst pos
-		f -> [integer] grid length
-		g -> [integer] traversal steps
-		i -> [integer] dst height
-		j -> [integer] dst width
-		k -> [integer] cur src pos
-		l -> [integer] cur src height
-		m -> [integer] cur src width
-		* c -> [array] grid
-	*/
 	g = AvolittyPathfinderB(d, a, b, e, f, g, i, j, k, l, m, c);
 	c[k] = s;
 	c[e] = r;
-	/* .. */
 	return g;
 }
