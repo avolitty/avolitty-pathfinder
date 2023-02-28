@@ -17,7 +17,7 @@ int main(void) {
 		0U, 0U, 0U, 7U, 7U, 7U, 0U, 7U, 0U, 0U, 0U,
 		0U, 0U, 0U, 7U, 0U, 7U, 7U, 7U, 0U, 0U, 0U,
 		0U, 0U, 0U, 7U, 0U, 7U, 0U, 0U, 0U, 0U, 0U,
-		0U, 7U, 7U, 7U, 7U, 7U, 0U, 0U, 0U, 0U, 0U,
+		7U, 7U, 7U, 7U, 7U, 7U, 0U, 0U, 0U, 0U, 0U,
 		0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
 		0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
 		7U, 7U, 7U, 7U, 7U, 0U, 0U, 0U, 0U, 0U, 0U,

@@ -529,51 +529,51 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 
 				/* up left */
 
-				if ((k[h] == z) || (k[h] == u)) {
-					e++;
-					k[h] += s;
-					m = h;
+				if (*aa > e) {
+					if ((k[h] == z) || (k[h] == u)) {
+						e++;
+						k[h] += s;
+						m = h;
 
-					if (f == i) {
-						/* left traversal */
-						o = a[w];
-						h -= o;
-						j--;
-
-						while ((k[h] < q) && (g != j)) {
-							e++;
-							k[h] += s;
+						if (f == i) {
+							/* left traversal */
+							o = a[w];
 							h -= o;
 							j--;
-						}
 
-						if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
-							if (b != h) {
-								ac = d;
-								y = k[h];
-								k[h] = t;
+							while ((k[h] < q) && (g != j)) {
+								e++;
+								k[h] += s;
+								h -= o;
+								j--;
+							}
 
-								while (ab != ac) {
-									ac--;
+							if ((((*aa > e) && (f == i)) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
+								if (b != h) {
+									ac = d;
+									y = k[h];
+									k[h] = t;
 
-									if ((k[ac] == q) || (k[ac] == r)) {
-										ae = (ac / c);
-										af = (ac % c);
-										ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+									while (ab != ac) {
+										ac--;
 
-										if (ab != ah) {
-											ai = ah;
+										if ((k[ac] == q) || (k[ac] == r)) {
+											ae = (ac / c);
+											af = (ac % c);
+											ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+
+											if (ab != ah) {
+												ai = ah;
+											}
 										}
 									}
-								}
 
-								if (ab == ai) {
-									k[h] = y;
+									if (ab == ai) {
+										k[h] = y;
+									} else {
+										k[h] = r;
+									}
 								} else {
-									k[h] = r;
-								}
-							} else {
-								if (*aa > e) {
 									ai = e;
 									ae = (h + o);
 
@@ -583,69 +583,152 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 										ag = t;
 									}
 								}
-							}
 
-							h += o;
-							j++;
+								h += o;
+								j++;
 
-							if (ag == s) {
-								if (ab != ai) {
-									ag = u;
-								}
+								if (ag == s) {
+									if (ab != ai) {
+										ag = u;
+									}
 
-								while (h != m) {
+									while (h != m) {
+										k[h] -= ag;
+										h += o;
+										j++;
+									}
+
 									k[h] -= ag;
-									h += o;
-									j++;
-								}
+									ag = s;
+								} else {
+									while (h != m) {
+										if (k[h] == v) {
+											k[h] -= ad;
+										} else {
+											k[h] -= t;
+										}
 
-								k[h] -= ag;
-								ag = s;
-							} else {
-								while (h != m) {
+										h += o;
+										j++;
+									}
+
 									if (k[h] == v) {
 										k[h] -= ad;
 									} else {
 										k[h] -= t;
 									}
+								}
+							} else {
+								h += o;
+								j++;
 
+								while (h != m) {
+									k[h] -= s;
 									h += o;
 									j++;
 								}
 
-								if (k[h] == v) {
-									k[h] -= ad;
-								} else {
-									k[h] -= t;
-								}
+								k[h] -= s;
 							}
 						} else {
-							h += o;
-							j++;
-
-							while (h != m) {
-								k[h] -= s;
-								h += o;
-								j++;
-							}
-
-							k[h] -= s;
-						}
-					} else {
-						/* up traversal */
-						o = a[s];
-						h -= o;
-						i--;
-
-						while ((k[h] < q) && (f != i)) {
-							e++;
-							k[h] += s;
+							/* up traversal */
+							o = a[s];
 							h -= o;
 							i--;
-						}
 
-						if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
-							if (b != h) {
+							while ((k[h] < q) && (f != i)) {
+								e++;
+								k[h] += s;
+								h -= o;
+								i--;
+							}
+
+							if ((((*aa > e) && (f == i)) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
+								if (b != h) {
+									ac = d;
+									y = k[h];
+									k[h] = t;
+
+									while (ab != ac) {
+										ac--;
+
+										if ((k[ac] == q) || (k[ac] == r)) {
+											ae = (ac / c);
+											af = (ac % c);
+											ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+
+											if (ab != ah) {
+												ai = ah;
+											}
+										}
+									}
+
+									if (ab == ai) {
+										k[h] = y;
+									} else {
+										k[h] = r;
+									}
+								} else {
+									ai = e;
+									ae = (h + o);
+
+									if (k[ae] == v) {
+                                	                       		        ag = ad;
+									} else {
+										ag = t;
+									}
+								}
+
+								h += o;
+								i++;
+
+								if (ag == s) {
+									if (ab != ai) {
+										ag = u;
+									}
+
+									while (h != m) {
+										k[h] -= ag;
+										h += o;
+										i++;
+									}
+
+									k[h] -= ag;
+									ag = s;
+								} else {
+									while (h != m) {
+										if (k[h] == v) {
+											k[h] -= ad;
+										} else {
+											k[h] -= t;
+										}
+
+										h += o;
+										i++;
+									}
+
+									if (k[h] == v) {
+										k[h] -= ad;
+									} else {
+										k[h] -= t;
+									}
+								}
+							} else {
+								h += o;
+								i++;
+
+								while (h != m) {
+									k[h] -= s;
+									h += o;
+									i++;
+								}
+
+								k[h] -= s;
+							}
+						}
+					} else {
+						if (b != h) {
+							if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
 								ac = d;
 								y = k[h];
 								k[h] = t;
@@ -669,95 +752,8 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 								} else {
 									k[h] = r;
 								}
-							} else {
-								if (*aa > e) {
-									ai = e;
-									ae = (h + o);
-
-									if (k[ae] == v) {
-                                                        		        ag = ad;
-									} else {
-										ag = t;
-									}
-								}
-							}
-
-							h += o;
-							i++;
-
-							if (ag == s) {
-								if (ab != ai) {
-									ag = u;
-								}
-
-								while (h != m) {
-									k[h] -= ag;
-									h += o;
-									i++;
-								}
-
-								k[h] -= ag;
-								ag = s;
-							} else {
-								while (h != m) {
-									if (k[h] == v) {
-										k[h] -= ad;
-									} else {
-										k[h] -= t;
-									}
-
-									h += o;
-									i++;
-								}
-
-								if (k[h] == v) {
-									k[h] -= ad;
-								} else {
-									k[h] -= t;
-								}
 							}
 						} else {
-							h += o;
-							i++;
-
-							while (h != m) {
-								k[h] -= s;
-								h += o;
-								i++;
-							}
-
-							k[h] -= s;
-						}
-					}
-				} else {
-					if (b != h) {
-						if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
-							ac = d;
-							y = k[h];
-							k[h] = t;
-
-							while (ab != ac) {
-								ac--;
-
-								if ((k[ac] == q) || (k[ac] == r)) {
-									ae = (ac / c);
-									af = (ac % c);
-									ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
-
-									if (ab != ah) {
-										ai = ah;
-									}
-								}
-							}
-
-							if (ab == ai) {
-								k[h] = y;
-							} else {
-								k[h] = r;
-							}
-						}
-					} else {
-						if (*aa > e) {
 							ai = e;
 							ae = (h + n);
 
@@ -817,34 +813,34 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 
 				/* right traversal */
 
-				if (b != h) {
-					if ((f == i) && (g == j)) {
-						ac = d;
-						y = k[h];
-						k[h] = t;
+				if (*aa > e) {
+					if (b != h) {
+						if ((f == i) && (g == j)) {
+							ac = d;
+							y = k[h];
+							k[h] = t;
 
-						while (ab != ac) {
-							ac--;
+							while (ab != ac) {
+								ac--;
 
-							if ((k[ac] == q) || (k[ac] == r)) {
-								ae = (ac / c);
-								af = (ac % c);
-								ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+								if ((k[ac] == q) || (k[ac] == r)) {
+									ae = (ac / c);
+									af = (ac % c);
+									ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
 
-								if (ab != ah) {
-									ai = ah;
+									if (ab != ah) {
+										ai = ah;
+									}
 								}
 							}
-						}
 
-						if (ab == ai) {
-							k[h] = y;
-						} else {
-							k[h] = r;
+							if (ab == ai) {
+								k[h] = y;
+							} else {
+								k[h] = r;
+							}
 						}
-					}
-				} else {
-					if (*aa > e) {
+					} else {
 						ai = e;
 						ae = (h - n);
 
@@ -894,34 +890,34 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 
 				/* down traversal */
 
-				if (b != h) {
-					if ((f == i) && (g == j)) {
-						ac = d;
-						y = k[h];
-						k[h] = t;
+				if (*aa > e) {
+					if (b != h) {
+						if ((f == i) && (g == j)) {
+							ac = d;
+							y = k[h];
+							k[h] = t;
 
-						while (ab != ac) {
-							ac--;
+							while (ab != ac) {
+								ac--;
 
-							if ((k[ac] == q) || (k[ac] == r)) {
-								ae = (ac / c);
-								af = (ac % c);
-								ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+								if ((k[ac] == q) || (k[ac] == r)) {
+									ae = (ac / c);
+									af = (ac % c);
+									ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
 
-								if (ab != ah) {
-									ai = ah;
+									if (ab != ah) {
+										ai = ah;
+									}
 								}
 							}
-						}
 
-						if (ab == ai) {
-							k[h] = y;
-						} else {
-							k[h] = r;
+							if (ab == ai) {
+								k[h] = y;
+							} else {
+								k[h] = r;
+							}
 						}
-					}
-				} else {
-					if (*aa > e) {
+					} else {
 						ai = e;
 						ae = (h - n);
 
@@ -976,51 +972,51 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 
 				/* down left traversal */
 
-				if ((k[h] == z) || (k[h] == u)) {
-					e++;
-					k[h] += s;
-					m = h;
+				if (*aa > e) {
+					if ((k[h] == z) || (k[h] == u)) {
+						e++;
+						k[h] += s;
+						m = h;
 
-					if (f == i) {
-						/* left traversal */
-						o = a[w];
-						h -= o;
-						j--;
-
-						while ((k[h] < q) && (g != j)) {
-							e++;
-							k[h] += s;
+						if (f == i) {
+							/* left traversal */
+							o = a[w];
 							h -= o;
 							j--;
-						}
 
-						if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
-							if (b != h) {
-								ac = d;
-								y = k[h];
-								k[h] = t;
+							while ((k[h] < q) && (g != j)) {
+								e++;
+								k[h] += s;
+								h -= o;
+								j--;
+							}
 
-								while (ab != ac) {
-									ac--;
+							if ((((*aa > e) && (f == i)) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
+								if (b != h) {
+									ac = d;
+									y = k[h];
+									k[h] = t;
 
-									if ((k[ac] == q) || (k[ac] == r)) {
-										ae = (ac / c);
-										af = (ac % c);
-										ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+									while (ab != ac) {
+										ac--;
 
-										if (ab != ah) {
-											ai = ah;
+										if ((k[ac] == q) || (k[ac] == r)) {
+											ae = (ac / c);
+											af = (ac % c);
+											ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+
+											if (ab != ah) {
+												ai = ah;
+											}
 										}
 									}
-								}
 
-								if (ab == ai) {
-									k[h] = y;
+									if (ab == ai) {
+										k[h] = y;
+									} else {
+										k[h] = r;
+									}
 								} else {
-									k[h] = r;
-								}
-							} else {
-								if (*aa > e) {
 									ai = e;
 									ae = (h + o);
 
@@ -1030,69 +1026,152 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 										ag = t;
 									}
 								}
-							}
 
-							h += o;
-							j++;
+								h += o;
+								j++;
 
-							if (ag == s) {
-								if (ab != ai) {
-									ag = u;
-								}
+								if (ag == s) {
+									if (ab != ai) {
+										ag = u;
+									}
 
-								while (h != m) {
+									while (h != m) {
+										k[h] -= ag;
+										h += o;
+										j++;
+									}
+
 									k[h] -= ag;
-									h += o;
-									j++;
-								}
+									ag = s;
+								} else {
+									while (h != m) {
+										if (k[h] == v) {
+											k[h] -= ad;
+										} else {
+											k[h] -= t;
+										}
 
-								k[h] -= ag;
-								ag = s;
-							} else {
-								while (h != m) {
+										h += o;
+										j++;
+									}
+
 									if (k[h] == v) {
 										k[h] -= ad;
 									} else {
 										k[h] -= t;
 									}
+								}
+							} else {
+								h += o;
+								j++;
 
+								while (h != m) {
+									k[h] -= s;
 									h += o;
 									j++;
 								}
 
-								if (k[h] == v) {
-									k[h] -= ad;
-								} else {
-									k[h] -= t;
-								}
+								k[h] -= s;
 							}
 						} else {
-							h += o;
-							j++;
-
-							while (h != m) {
-								k[h] -= s;
-								h += o;
-								j++;
-							}
-
-							k[h] -= s;
-						}
-					} else {
-						/* down traversal */
-						o = a[s];
-						h += o;
-						i++;
-
-						while ((k[h] < q) && (f != i)) {
-							e++;
-							k[h] += s;
+							/* down traversal */
+							o = a[s];
 							h += o;
 							i++;
-						}
 
-						if ((f == i) && (g == j) && ((k[h] == q) || (k[h] == r))) {
-							if (b != h) {
+							while ((k[h] < q) && (f != i)) {
+								e++;
+								k[h] += s;
+								h += o;
+								i++;
+							}
+
+							if ((((*aa > e) && (f == i)) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
+								if (b != h) {
+									ac = d;
+									y = k[h];
+									k[h] = t;
+
+									while (ab != ac) {
+										ac--;
+
+										if ((k[ac] == q) || (k[ac] == r)) {
+											ae = (ac / c);
+											af = (ac % c);
+											ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+
+											if (ab != ah) {
+												ai = ah;
+											}
+										}
+									}
+
+									if (ab == ai) {
+										k[h] = y;
+									} else {
+										k[h] = r;
+									}
+								} else {
+									ai = e;
+									ae = (h - o);
+
+									if (k[ae] == v) {
+										ag = ad;
+									} else {
+										ag = t;
+									}
+								}
+
+								h -= o;
+								i--;
+
+								if (ag == s) {
+									if (ab != ai) {
+										ag = u;
+									}
+
+									while (h != m) {
+										k[h] -= ag;
+										h -= o;
+										i--;
+									}
+
+									k[h] -= ag;
+									ag = s;
+								} else {
+									while (h != m) {
+										if (k[h] == v) {
+											k[h] -= ad;
+										} else {
+											k[h] -= t;
+										}
+
+										h -= o;
+										i--;
+									}
+
+									if (k[h] == v) {
+										k[h] -= ad;
+									} else {
+										k[h] -= t;
+									}
+								}
+							} else {
+								h -= o;
+								i--;
+
+								while (h != m) {
+									k[h] -= s;
+									h -= o;
+									i--;
+								}
+
+								k[h] -= s;
+							}
+						}
+					} else {
+						if (b != h) {
+							if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
 								ac = d;
 								y = k[h];
 								k[h] = t;
@@ -1116,95 +1195,8 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 								} else {
 									k[h] = r;
 								}
-							} else {
-								if (*aa > e) {
-									ai = e;
-									ae = (h - o);
-
-									if (k[ae] == v) {
-										ag = ad;
-									} else {
-										ag = t;
-									}
-								}
-							}
-
-							h -= o;
-							i--;
-
-							if (ag == s) {
-								if (ab != ai) {
-									ag = u;
-								}
-
-								while (h != m) {
-									k[h] -= ag;
-									h -= o;
-									i--;
-								}
-
-								k[h] -= ag;
-								ag = s;
-							} else {
-								while (h != m) {
-									if (k[h] == v) {
-										k[h] -= ad;
-									} else {
-										k[h] -= t;
-									}
-
-									h -= o;
-									i--;
-								}
-
-								if (k[h] == v) {
-									k[h] -= ad;
-								} else {
-									k[h] -= t;
-								}
 							}
 						} else {
-							h -= o;
-							i--;
-
-							while (h != m) {
-								k[h] -= s;
-								h -= o;
-								i--;
-							}
-
-							k[h] -= s;
-						}
-					}
-				} else {
-					if (b != h) {
-						if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
-							ac = d;
-							y = k[h];
-							k[h] = t;
-
-							while (ab != ac) {
-								ac--;
-
-								if ((k[ac] == q) || (k[ac] == r)) {
-									ae = (ac / c);
-									af = (ac % c);
-									ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
-
-									if (ab != ah) {
-										ai = ah;
-									}
-								}
-							}
-
-							if (ab == ai) {
-								k[h] = y;
-							} else {
-								k[h] = r;
-							}
-						}
-					} else {
-						if (*aa > e) {
 							ai = e;
 							ae = (h + n);
 
@@ -1259,51 +1251,51 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 
 				/* down right traversal */
 
-				if ((k[h] == z) || (k[h] == u)) {
-					e++;
-					k[h] += s;
-					m = h;
+				if (*aa > e) {
+					if ((k[h] == z) || (k[h] == u)) {
+						e++;
+						k[h] += s;
+						m = h;
 
-					if (f == i) {
-						/* right traversal */
-						o = a[w];
-						h += o;
-						j++;
-
-						while ((k[h] < q) && (g != j)) {
-							e++;
-							k[h] += s;
+						if (f == i) {
+							/* right traversal */
+							o = a[w];
 							h += o;
 							j++;
-						}
 
-						if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
-							if (b != h) {
-								ac = d;
-								y = k[h];
-								k[h] = t;
+							while ((k[h] < q) && (g != j)) {
+								e++;
+								k[h] += s;
+								h += o;
+								j++;
+							}
 
-								while (ab != ac) {
-									ac--;
+							if ((((*aa > e) && (f == i)) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
+								if (b != h) {
+									ac = d;
+									y = k[h];
+									k[h] = t;
 
-									if ((k[ac] == q) || (k[ac] == r)) {
-										ae = (ac / c);
-										af = (ac % c);
-										ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+									while (ab != ac) {
+										ac--;
 
-										if (ab != ah) {
-											ai = ah;
+										if ((k[ac] == q) || (k[ac] == r)) {
+											ae = (ac / c);
+											af = (ac % c);
+											ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+
+											if (ab != ah) {
+												ai = ah;
+											}
 										}
 									}
-								}
 
-								if (ab == ai) {
-									k[h] = y;
+									if (ab == ai) {
+										k[h] = y;
+									} else {
+										k[h] = r;
+									}
 								} else {
-									k[h] = r;
-								}
-							} else {
-								if (*aa > e) {
 									ai = e;
 									ae = (h - o);
 
@@ -1313,69 +1305,152 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 										ag = t;
 									}
 								}
-							}
 
-							h -= o;
-							j--;
+								h -= o;
+								j--;
 
-							if (ag == s) {
-								if (ab != ai) {
-									ag = u;
-								}
+								if (ag == s) {
+									if (ab != ai) {
+										ag = u;
+									}
 
-								while (h != m) {
+									while (h != m) {
+										k[h] -= ag;
+										h -= o;
+										j--;
+									}
+
 									k[h] -= ag;
-									h -= o;
-									j--;
-								}
+									ag = s;
+								} else {
+									while (h != m) {
+										if (k[h] == v) {
+											k[h] -= ad;
+										} else {
+											k[h] -= t;
+										}
 
-								k[h] -= ag;
-								ag = s;
-							} else {
-								while (h != m) {
+										h -= o;
+										j--;
+									}
+
 									if (k[h] == v) {
 										k[h] -= ad;
 									} else {
 										k[h] -= t;
 									}
+								}
+							} else {
+								h -= o;
+								j--;
 
+								while (h != m) {
+									k[h] -= s;
 									h -= o;
 									j--;
 								}
 
-								if (k[h] == v) {
-									k[h] -= ad;
-								} else {
-									k[h] -= t;
-								}
+								k[h] -= s;
 							}
 						} else {
-							h -= o;
-							j--;
-
-							while (h != m) {
-								k[h] -= s;
-								h -= o;
-								j--;
-							}
-
-							k[h] -= s;
-						}
-					} else {
-						/* down traversal */
-						o = a[s];
-						h += o;
-						i++;
-
-						while ((k[h] < q) && (f != i)) {
-							e++;
-							k[h] += s;
+							/* down traversal */
+							o = a[s];
 							h += o;
 							i++;
-						}
 
-						if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
-							if (b != h) {
+							while ((k[h] < q) && (f != i)) {
+								e++;
+								k[h] += s;
+								h += o;
+								i++;
+							}
+
+							if ((((*aa > e) && (f == i)) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
+								if (b != h) {
+									ac = d;
+									y = k[h];
+									k[h] = t;
+
+									while (ab != ac) {
+										ac--;
+
+										if ((k[ac] == q) || (k[ac] == r)) {
+											ae = (ac / c);
+											af = (ac % c);
+											ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
+
+											if (ab != ah) {
+												ai = ah;
+											}
+										}
+									}
+
+									if (ab == ai) {
+										k[h] = y;
+									} else {
+										k[h] = r;
+									}
+								} else {
+									ai = e;
+									ae = (h - o);
+
+									if (k[ae] == v) {
+                                	                               		ag = ad;
+									} else {
+										ag = t;
+									}
+								}
+
+								h -= o;
+								i--;
+
+								if (ag == s) {
+									if (ab != ai) {
+										ag = u;
+									}
+
+									while (h != m) {
+										k[h] -= ag;
+										h -= o;
+										i--;
+									}
+
+									k[h] -= ag;
+									ag = s;
+								} else {
+									while (h != m) {
+										if (k[h] == v) {
+											k[h] -= ad;
+										} else {
+											k[h] -= t;
+										}
+
+										h -= o;
+										i--;
+									}
+
+									if (k[h] == v) {
+										k[h] -= ad;
+									} else {
+										k[h] -= t;
+									}
+								}
+							} else {
+								h -= o;
+								i--;
+
+								while (h != m) {
+									k[h] -= s;
+									h -= o;
+									i--;
+								}
+
+								k[h] -= s;
+							}
+						}
+					} else {
+						if (b != h) {
+							if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
 								ac = d;
 								y = k[h];
 								k[h] = t;
@@ -1399,95 +1474,8 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int *
 								} else {
 									k[h] = r;
 								}
-							} else {
-								if (*aa > e) {
-									ai = e;
-									ae = (h - o);
-
-									if (k[ae] == v) {
-                                                                		ag = ad;
-									} else {
-										ag = t;
-									}
-								}
-							}
-
-							h -= o;
-							i--;
-
-							if (ag == s) {
-								if (ab != ai) {
-									ag = u;
-								}
-
-								while (h != m) {
-									k[h] -= ag;
-									h -= o;
-									i--;
-								}
-
-								k[h] -= ag;
-								ag = s;
-							} else {
-								while (h != m) {
-									if (k[h] == v) {
-										k[h] -= ad;
-									} else {
-										k[h] -= t;
-									}
-
-									h -= o;
-									i--;
-								}
-
-								if (k[h] == v) {
-									k[h] -= ad;
-								} else {
-									k[h] -= t;
-								}
 							}
 						} else {
-							h -= o;
-							i--;
-
-							while (h != m) {
-								k[h] -= s;
-								h -= o;
-								i--;
-							}
-
-							k[h] -= s;
-						}
-					}
-				} else {
-					if (b != h) {
-						if (((f == i) && (g == j)) && ((k[h] == q) || (k[h] == r))) {
-							ac = d;
-							y = k[h];
-							k[h] = t;
-
-							while (ab != ac) {
-								ac--;
-
-								if ((k[ac] == q) || (k[ac] == r)) {
-									ae = (ac / c);
-									af = (ac % c);
-									ah = AvolittyPathfinderA(a, aa, b, ah, ai, c, d, e, ae, af, h, i, j, k);
-
-									if (ab != ah) {
-										ai = ah;
-									}
-								}
-							}
-
-							if (ab == ai) {
-								k[h] = y;
-							} else {
-								k[h] = r;
-							}
-						}
-					} else {
-						if (*aa > e) {
 							ai = e;
 							ae = (h - n);
 
