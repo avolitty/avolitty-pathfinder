@@ -1570,18 +1570,34 @@ unsigned long int AvolittyPathfinder(unsigned long int a, unsigned long int b, u
 
 			if (((c[k] != q) || (c[m] != q)) && ((c[l] != q) || (c[n] != q))) {
 				if (c[k] != q) {
+					if (c[k] == r) {
+						d[r] = k;
+					}
+
 					c[k] = o;
 				}
 
 				if (c[l] != q) {
+					if (c[l] == r) {
+						d[r] = l;
+					}
+
 					c[l] = o;
 				}
 
 				if (c[m] != q) {
+					if (c[m] == r) {
+						d[r] = m;
+					}
+
 					c[m] = o;
 				}
 
 				if (c[n] != q) {
+					if (c[n] == r) {
+						d[r] = n;
+					}
+
 					c[n] = o;
 				}
 			}
