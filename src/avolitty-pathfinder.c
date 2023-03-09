@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b, unsigned long int ah, unsigned long int ai, unsigned long int c,unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned char * k) {
+unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b, unsigned long int ai, unsigned long int c,unsigned long int d, unsigned long int e, unsigned long int f, unsigned long int g, unsigned long int h, unsigned long int i, unsigned long int j, unsigned char * k) {
 	/* alphabetizing and deleting unused variables with a maximum of 26 variables per function scope */
 	unsigned long int ab;
 	unsigned long int ac;
@@ -21,6 +21,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 	unsigned long int y;
 	unsigned char z;
 	unsigned char aa;
+	unsigned char ae;
 	unsigned char ag;
 	ab = ((unsigned long int) 0UL);
 	e++;
@@ -37,6 +38,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 	x = ((unsigned char) 1U);
 	z = ((unsigned char) 0U);
 	aa = ((unsigned char) 7U);
+	ae = ((unsigned char) 3U);
 	ag = s;
 
 	if (f == i) {
@@ -79,10 +81,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 								ac--;
 
 								if ((k[ac] == q) || (k[ac] == r)) {
-									ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+									a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-									if (ab != ah) {
-										ai = ah;
+									if (ab != a[ae]) {
+										ai = a[ae];
 									}
 								}
 							}
@@ -152,10 +154,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 								ac--;
 
 								if ((k[ac] == q) || (k[ac] == r)) {
-									ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+									a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-									if (ab != ah) {
-										ai = ah;
+									if (ab != a[ae]) {
+										ai = a[ae];
 									}
 								}
 							}
@@ -249,10 +251,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 										ac--;
 
 										if ((k[ac] == q) || (k[ac] == r)) {
-											ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+											a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-											if (ab != ah) {
-												ai = ah;
+											if (ab != a[ae]) {
+												ai = a[ae];
 											}
 										}
 									}
@@ -342,10 +344,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 										ac--;
 
 										if ((k[ac] == q) || (k[ac] == r)) {
-											ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+											a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-											if (ab != ah) {
-												ai = ah;
+											if (ab != a[ae]) {
+												ai = a[ae];
 											}
 										}
 									}
@@ -424,10 +426,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 									ac--;
 
 									if ((k[ac] == q) || (k[ac] == r)) {
-										ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+										a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-										if (ab != ah) {
-											ai = ah;
+										if (ab != a[ae]) {
+											ai = a[ae];
 										}
 									}
 								}
@@ -519,10 +521,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 										ac--;
 
 										if ((k[ac] == q) || (k[ac] == r)) {
-											ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+											a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-											if (ab != ah) {
-												ai = ah;
+											if (ab != a[ae]) {
+												ai = a[ae];
 											}
 										}
 									}
@@ -611,10 +613,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 										ac--;
 
 										if ((k[ac] == q) || (k[ac] == r)) {
-											ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+											a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-											if (ab != ah) {
-												ai = ah;
+											if (ab != a[ae]) {
+												ai = a[ae];
 											}
 										}
 									}
@@ -693,10 +695,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 									ac--;
 
 									if ((k[ac] == q) || (k[ac] == r)) {
-										ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+										a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-										if (ab != ah) {
-											ai = ah;
+										if (ab != a[ae]) {
+											ai = a[ae];
 										}
 									}
 								}
@@ -776,10 +778,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 								ac--;
 
 								if ((k[ac] == q) || (k[ac] == r)) {
-									ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+									a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-									if (ab != ah) {
-										ai = ah;
+									if (ab != a[ae]) {
+										ai = a[ae];
 									}
 								}
 							}
@@ -849,10 +851,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 								ac--;
 
 								if ((k[ac] == q) || (k[ac] == r)) {
-									ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+									a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-									if (ab != ah) {
-										ai = ah;
+									if (ab != a[ae]) {
+										ai = a[ae];
 									}
 								}
 							}
@@ -944,10 +946,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 										ac--;
 
 										if ((k[ac] == q) || (k[ac] == r)) {
-											ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+											a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-											if (ab != ah) {
-												ai = ah;
+											if (ab != a[ae]) {
+												ai = a[ae];
 											}
 										}
 									}
@@ -1036,10 +1038,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 										ac--;
 
 										if ((k[ac] == q) || (k[ac] == r)) {
-											ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+											a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-											if (ab != ah) {
-												ai = ah;
+											if (ab != a[ae]) {
+												ai = a[ae];
 											}
 										}
 									}
@@ -1118,10 +1120,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 									ac--;
 
 									if ((k[ac] == q) || (k[ac] == r)) {
-										ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+										a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-										if (ab != ah) {
-											ai = ah;
+										if (ab != a[ae]) {
+											ai = a[ae];
 										}
 									}
 								}
@@ -1213,10 +1215,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 										ac--;
 
 										if ((k[ac] == q) || (k[ac] == r)) {
-											ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+											a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-											if (ab != ah) {
-												ai = ah;
+											if (ab != a[ae]) {
+												ai = a[ae];
 											}
 										}
 									}
@@ -1305,10 +1307,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 										ac--;
 
 										if ((k[ac] == q) || (k[ac] == r)) {
-											ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+											a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-											if (ab != ah) {
-												ai = ah;
+											if (ab != a[ae]) {
+												ai = a[ae];
 											}
 										}
 									}
@@ -1387,10 +1389,10 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 									ac--;
 
 									if ((k[ac] == q) || (k[ac] == r)) {
-										ah = AvolittyPathfinderA(a, b, ah, ai, c, d, e, ac / c, ac % c, h, i, j, k);
+										a[ae] = AvolittyPathfinderA(a, b, ai, c, d, e, ac / c, ac % c, h, i, j, k);
 
-										if (ab != ah) {
-											ai = ah;
+										if (ab != a[ae]) {
+											ai = a[ae];
 										}
 									}
 								}
@@ -1574,7 +1576,7 @@ unsigned long int AvolittyPathfinder(unsigned long int a, unsigned long int b, u
 	l = (k / b);
 	m = (k % b);
 	d[p] = (b - g);
-	d[((unsigned char) 3U)] = h;
+	d[((unsigned char) 3U)] = k;
 	d[r] = g;
 	d[s] = d[p];
 	d[t] = (b + g);
@@ -1589,7 +1591,7 @@ unsigned long int AvolittyPathfinder(unsigned long int a, unsigned long int b, u
 		i--;
 
 		if ((c[i] == u) || (c[i] == o)) {
-			AvolittyPathfinderA(d, e, k, l, b, f, h, i / b, i % b, k, l, m, c);
+			AvolittyPathfinderA(d, e, l, b, f, h, i / b, i % b, k, l, m, c);
 		}
 	}
 
