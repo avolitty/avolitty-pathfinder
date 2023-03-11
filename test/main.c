@@ -32,7 +32,8 @@ int main(void) {
 	e = d;
 	f = AvolittyPathfinder(a, b, g);
 	a *= b;
-	printf("%u ", g[e++]);
+	printf("%u ", g[e]);
+	e++;
 
 	if (a == f) {
 		f = d;
