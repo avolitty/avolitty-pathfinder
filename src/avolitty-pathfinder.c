@@ -226,6 +226,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 				}
 			}
 		} else {
+			e++;
 			i--;
 
 			if (p == u) {
@@ -527,6 +528,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 					}
 				}
 			} else {
+				e++;
 				n = (c + af);
 				h -= n;
 				j--;
@@ -1000,6 +1002,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 			i++;
 
 			if (p == x) {
+				e++;
 				n = (c - af);
 				h += n;
 				j--;
@@ -1297,6 +1300,7 @@ unsigned long int AvolittyPathfinderA(unsigned long int * a, unsigned long int b
 					}
 				}
 			} else {
+				e++;
 				n = (c + af);
 				h += n;
 				j++;
